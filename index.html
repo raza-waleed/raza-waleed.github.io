@@ -1,406 +1,307 @@
-<!doctype html>
-  <html lang="en">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Waleed Raza - Ph.D., Electrical Engineering &amp; Computer Science</title>
-<meta name="description" content="Waleed Raza - Ph.D. in Electrical Engineering &amp; Computer Science from Embry-Riddle Aeronautical University, researching Advanced Air Mobility, UAS integration into the National Airspace System, and aviation safety.">
-<link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+  <meta name="theme-color" content="#07131d">
+  <title>Waleed Raza, Ph.D. | Aviation Routing &amp; Airspace Systems</title>
+  <meta name="description" content="Waleed Raza is an aviation routing researcher and aerospace systems engineer specializing in multi-criteria flight routing, airspace technology, noise-aware optimization, and scalable aviation data systems.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <nav class="topnav">
-  <div class="wrap">
-  <div class="brand">Waleed Raza</div>
-  <ul>
-  <li><a href="#about">About</a></li>
-  <li><a href="#research">Research</a></li>
-  <li><a href="#education">Education</a></li>
-  <li><a href="#experience">Experience</a></li>
-  <li><a href="#publications">Publications</a></li>
-  <li><a href="#awards">Awards</a></li>
-  <li><a href="#service">Service</a></li>
-  <li><a href="#contact">Contact</a></li>
-  </ul>
-  </div>
+  <nav class="topnav" aria-label="Primary navigation">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="Waleed Raza, home">
+        <span class="brand-mark" aria-hidden="true">WR</span>
+        <span>Waleed Raza, Ph.D.</span>
+      </a>
+      <div class="nav-links">
+        <a href="#expertise">Expertise</a>
+        <a href="#approach">Approach</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="cv.html">View CV</a>
+    </div>
   </nav>
-  <header class="hero" id="about">
-  <div class="wrap">
-  <div class="hero-row">
-  <div class="avatar">WR</div>
-  <div>
-  <h1>Waleed Raza</h1>
-  <p class="title-line">Ph.D., Electrical Engineering &amp; Computer Science</p>
-<p class="affil">Embry-Riddle Aeronautical University &middot; Daytona Beach, FL</p>
-</div>
-</div>
 
-<p class="summary">
-  Ph.D. focused on UAS integration into the National Airspace System, Advanced Air
-Mobility, airspace routing and operations, flight-recorder requirements, aviation safety,
-  optimization, simulation, and system-level modeling. My
-<a href="https://commons.erau.edu/edt/1007/" target="_blank" rel="noopener">dissertation</a>
-addressed noise-optimized routing for Advanced Air Mobility, building on a multidisciplinary
-background spanning electrical engineering, signal processing, wireless communications, and
-  data-driven aerospace systems research.
-  </p>
+  <main id="main">
+    <header class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Aviation routing research · Airspace systems engineering</p>
+          <h1>Aviation routing, engineered for operational reality.</h1>
+          <p class="hero-lede">I develop multi-criteria flight-routing methods that connect airspace constraints, vehicle performance, and community-noise exposure into defensible trajectory decisions. My work helps aviation technology teams minimize operational cost, optimize algorithmic flight paths, and move complex routing logic toward deployable systems.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#portfolio">View Technical Portfolio</a>
+            <a class="button button-secondary" href="mailto:waleedraza93@gmail.com?subject=Aviation%20routing%20architecture%20discussion">Discuss Architecture</a>
+          </div>
+          <p class="audience-line">For aviation technology leaders, airline operations teams, dispatch software vendors, aerospace consultancies, and academic collaborators.</p>
+        </div>
 
-<div class="badges">
-  <span class="badge">Advanced Air Mobility</span>
-<span class="badge">UAS / UAM Integration</span>
-<span class="badge">Airspace Operations &amp; Routing</span>
-  <span class="badge">Aviation Safety</span>
-<span class="badge">Optimization &amp; Simulation</span>
-  </div>
+        <aside class="route-console" aria-label="Doctoral research performance summary">
+          <div class="console-head">
+            <span>ROUTE OPTIMIZATION / CASE 01</span>
+            <span class="console-live">VALIDATED</span>
+          </div>
+          <svg class="route-map" viewBox="0 0 560 250" role="img" aria-labelledby="route-title route-desc">
+            <title id="route-title">Noise-aware aviation route network</title>
+            <desc id="route-desc">A conceptual route map connecting five vertiport nodes while avoiding sensitive receptor zones.</desc>
+            <defs>
+              <linearGradient id="route-gradient" x1="0" x2="1">
+                <stop offset="0" stop-color="#68e8ff"/>
+                <stop offset="1" stop-color="#b8ff68"/>
+              </linearGradient>
+            </defs>
+            <g class="map-grid" aria-hidden="true">
+              <path d="M0 50H560M0 100H560M0 150H560M0 200H560"/>
+              <path d="M80 0V250M160 0V250M240 0V250M320 0V250M400 0V250M480 0V250"/>
+            </g>
+            <g class="receptor-zone" aria-hidden="true">
+              <circle cx="308" cy="118" r="51"/>
+              <circle cx="431" cy="176" r="31"/>
+            </g>
+            <g class="baseline-route" aria-hidden="true">
+              <path d="M45 190 C165 164 235 105 350 111 S470 90 528 49"/>
+            </g>
+            <g class="optimized-route" aria-hidden="true">
+              <path d="M45 190 C145 209 232 199 320 173 S449 116 528 49"/>
+            </g>
+            <g class="route-nodes" aria-hidden="true">
+              <circle cx="45" cy="190" r="6"/>
+              <circle cx="196" cy="201" r="5"/>
+              <circle cx="320" cy="173" r="5"/>
+              <circle cx="433" cy="109" r="5"/>
+              <circle cx="528" cy="49" r="6"/>
+            </g>
+            <g class="map-labels" aria-hidden="true">
+              <text x="31" y="216">VP-01</text>
+              <text x="504" y="31">VP-05</text>
+              <text x="282" y="112">SENSITIVE</text>
+              <text x="289" y="127">RECEPTOR</text>
+            </g>
+          </svg>
+          <div class="metric-grid">
+            <div class="metric">
+              <span class="metric-value">20</span>
+              <span class="metric-label">directed routes</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">≈3.9 <small>dB</small></span>
+              <span class="metric-label">Lmax,95 reduction</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">≈6 <small>dB</small></span>
+              <span class="metric-label">SEL95 / EPNL95 reduction</span>
+            </div>
+          </div>
+          <p class="console-note">Doctoral research · Daytona Beach AAM network · Noise-priority cases</p>
+        </aside>
+      </div>
+    </header>
 
-  <div>
-  <a class="btn solid" href="cv.html">View / Print CV</a>
-  <a class="btn" href="https://scholar.google.com/citations?user=qOyRccEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-  <a class="btn" href="https://orcid.org/0000-0002-4142-3195" target="_blank" rel="noopener">ORCID</a>
-  </div>
-  </div>
-</header>
-  <section id="research">
-  <div class="wrap">
-<h2>Research Focus</h2>
-  <div class="grid-2">
-  <div class="entry">
-  <div class="entry-title">Advanced Air Mobility &amp; UAS Integration</div>
-<ul>
-<li>Route optimization and airspace network design for AAM operations</li>
-<li>Flight-recorder requirements for UAS and remotely piloted UAM aircraft</li>
-  <li>FAA guidance and industry-standards analysis for safe automation and certification</li>
-  <li>Vision-based detect-and-avoid for urban air mobility</li>
-  <li>UAS/eVTOL noise prediction and mitigation; AAM demand modeling</li>
-</ul>
-  </div>
-<div class="entry">
-<div class="entry-title">Signal Processing &amp; Communications</div>
-  <ul>
-  <li>Underwater acoustic OFDM communications and system reliability</li>
-  <li>Machine-learning methods for PAPR reduction and nonlinear-distortion removal</li>
-<li>Doppler compensation, wavelet-based techniques, matrix pencil algorithm</li>
-  <li>Geospatial and trajectory analysis, statistical and scientific visualization</li>
-  </ul>
-  </div>
-  </div>
-  </div>
-</section>
+    <section class="signal-strip" aria-label="Technical focus areas">
+      <div class="shell signal-grid">
+        <span>Graph-based route search</span>
+        <span>Trajectory optimization</span>
+        <span>CNS/ATM integration</span>
+        <span>Acoustic impact modeling</span>
+        <span>Aviation data engineering</span>
+      </div>
+    </section>
 
-  <section id="education">
-  <div class="wrap">
-  <h2>Education</h2>
+    <section class="section" id="expertise">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">01 / Core expertise</p>
+            <h2>Routing intelligence across the full decision stack.</h2>
+          </div>
+          <p>From graph construction and constraint modeling to regulatory alignment and real-time data ingestion, I approach aviation routing as one connected operational system.</p>
+        </div>
 
-  <div class="entry">
-<div class="entry-head">
-  <div>
-  <div class="entry-title">Ph.D., Electrical Engineering &amp; Computer Science</div>
-<div class="entry-org">Embry-Riddle Aeronautical University, Daytona Beach, FL</div>
-  </div>
-  <div class="entry-date">Aug 2022 - Jul 2026 &middot; GPA 4.0</div>
-  </div>
-  <ul>
-  <li>Dissertation: <a href="https://commons.erau.edu/edt/1007/" target="_blank" rel="noopener">"Noise-Optimized Routes for Air Taxi"</a> &mdash; Committee Chair: Richard S. Stansbury</li>
-  <li>Coursework: Artificial Intelligence, Scientific Visualization, Data-Driven Modeling, System Safety and Certification, UAV Cybersecurity, Probability &amp; Statistics</li>
-  </ul>
-  </div>
-  <div class="entry">
-  <div class="entry-head">
-  <div>
-  <div class="entry-title">M.Eng., Underwater Acoustics Engineering</div>
-<div class="entry-org">Harbin Engineering University, Harbin, China</div>
-</div>
-<div class="entry-date">Sep 2018 - Mar 2021 &middot; GPA 3.86</div>
-  </div>
-  <ul>
-  <li>Thesis: PAPR Reduction with Nonlinear Distortion Removal in Underwater Acoustic OFDM Communication Systems</li>
-</ul>
-</div>
+        <div class="expertise-grid">
+          <article class="expertise-card">
+            <div class="card-number">01</div>
+            <div class="card-icon" aria-hidden="true">G(V,E)</div>
+            <h3>Algorithmic Routing Engine Architecture</h3>
+            <p>Design of graph-based route engines that balance fuel or mission-energy efficiency, weather avoidance, airspace availability, community exposure, and operational constraints without obscuring the trade space.</p>
+            <ul class="technical-list">
+              <li>Multi-objective cost functions and Pareto analysis</li>
+              <li>Dynamic edge weighting and constraint propagation</li>
+              <li>Horizontal, vertical, and integrated trajectory refinement</li>
+            </ul>
+          </article>
 
-<div class="entry">
-  <div class="entry-head">
-  <div>
-  <div class="entry-title">B.Eng., Electronic Engineering</div>
-  <div class="entry-org">Dawood University of Engineering and Technology, Karachi, Pakistan</div>
-  </div>
-  <div class="entry-date">Jan 2013 - Dec 2016</div>
-  </div>
-  </div>
-  </div>
-  </section>
+          <article class="expertise-card">
+            <div class="card-number">02</div>
+            <div class="card-icon" aria-hidden="true">FPL</div>
+            <h3>NextGen / SESAR Alignment &amp; Airspace Technology</h3>
+            <p>Translation of FAA, EUROCONTROL, and ICAO operational frameworks into machine-verifiable routing rules, automated flight-plan checks, and traceable decision logic for modern CNS/ATM environments.</p>
+            <ul class="technical-list">
+              <li>Flight-plan validation and filing workflows</li>
+              <li>NOTAM, FIR, airway, and procedure constraints</li>
+              <li>Safety-case evidence and standards analysis</li>
+            </ul>
+          </article>
 
-  <section id="experience">
-  <div class="wrap">
-  <h2>Research &amp; Industry Experience</h2>
+          <article class="expertise-card">
+            <div class="card-number">03</div>
+            <div class="card-icon" aria-hidden="true">ADS-B</div>
+            <h3>Scalable Aviation Data Systems</h3>
+            <p>Data architectures that normalize live ADS-B surveillance, NOTAMs, weather products, and trajectory histories into time-aware geospatial models that routing services can query with low latency.</p>
+            <ul class="technical-list">
+              <li>Streaming ingestion and schema normalization</li>
+              <li>Spatiotemporal indexing and trajectory analytics</li>
+              <li>Versioned constraints and auditable provenance</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<div class="entry">
-<div class="entry-head">
-<div>
-<div class="entry-title">Graduate Research Assistant</div>
-<div class="entry-org">Embry-Riddle Aeronautical University, Daytona Beach, FL</div>
-  </div>
-  <div class="entry-date">Aug 2022 - Jul 2026</div>
-  </div>
-  <ul>
-  <li>Contributed to ASSURE Project A55 on flight-recorder requirements for UAS integration into the U.S. National Airspace System</li>
-<li>Contributed to ASSURE Project A64 evaluating AAM/UAM technologies, automation concepts, safety considerations, and system architectures</li>
-<li>Reviewed FAA guidance and industry standards to support research on safe automation and functional concepts</li>
-<li>Conducted AAM research covering airspace operations, routing, automation, trajectory analysis, and system-level integration</li>
-  <li>Produced technical writing and analysis on aviation safety, flight data recorders, UAS/eVTOL noise, AAM demand, and detect-and-avoid</li>
-  </ul>
-  </div>
-  <div class="entry">
-<div class="entry-head">
-  <div>
-  <div class="entry-title">Graduate Research Assistant (Master's Student)</div>
-  <div class="entry-org">Harbin Engineering University, Harbin, China</div>
-</div>
-<div class="entry-date">Sep 2018 - Mar 2021</div>
-  </div>
-  <ul>
-  <li>Researched underwater acoustic OFDM communications, reliability, nonlinear distortion removal, and Doppler compensation</li>
-<li>Developed machine-learning and signal-processing methods for communication-system analysis, contributing to peer-reviewed publications</li>
-  </ul>
-  </div>
+    <section class="section section-alt" id="approach">
+      <div class="shell philosophy-grid">
+        <div>
+          <p class="section-index">02 / Professional philosophy</p>
+          <h2>Physics-aware models. Software-grade execution.</h2>
+        </div>
+        <div class="philosophy-copy">
+          <p>I bridge complex aerospace dynamics and modern software engineering by turning operational reality into explicit computational structure: nodes, edges, trajectories, constraints, receptor impacts, and measurable decision criteria. The goal is not merely to produce a mathematically valid path. It is to produce a route whose safety assumptions, efficiency tradeoffs, and regulatory dependencies can be inspected and defended.</p>
+          <p>That demands fidelity at two scales. At the system level, routing must reflect vehicle performance, airspace procedures, weather, mission energy, and the communities beneath a corridor. At the execution level, deterministic rule evaluation, microsecond-sensitive scoring primitives, efficient geospatial queries, and reproducible data pipelines determine whether an algorithm can move from a research notebook into an operational architecture.</p>
+          <div class="principle-row" role="group" aria-label="Core principles">
+            <span>Safety before novelty</span>
+            <span>Tradeoffs made visible</span>
+            <span>Latency measured</span>
+            <span>Decisions traceable</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="entry">
-  <div class="entry-head">
-  <div>
-  <div class="entry-title">Assistant Engineer / Electrical Supervisor</div>
-<div class="entry-org">K-Electric (MM Associates Pvt. Ltd.), Karachi, Pakistan</div>
-</div>
-<div class="entry-date">Jul 2016 - Sep 2018</div>
-  </div>
-  <ul>
-  <li>Performed three-phase electrical testing, load distribution, and phase balancing across pole-mounted transformers</li>
-  <li>Diagnosed voltage issues in low-tension systems and located underground cable faults</li>
-<li>Supported feeder-tripping normalization, service restoration, and 11 kV network operations</li>
-</ul>
-</div>
+    <section class="section" id="portfolio">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">03 / Technical portfolio</p>
+            <h2>Evidence-led routing systems.</h2>
+          </div>
+          <p>One validated research program and one clearly labeled system architecture concept demonstrate how I structure routing problems from optimization objective to operational interface.</p>
+        </div>
 
-<div class="entry">
-<div class="entry-head">
-<div>
-<div class="entry-title">Engineering Intern</div>
-<div class="entry-org">KNSTEL, Lahore, Pakistan</div>
-  </div>
-  <div class="entry-date">Jun - Jul 2015</div>
-  </div>
-  <ul>
-  <li>Supported 3G network rollout for Telenor and Mobilink projects, including Huawei equipment installation and commissioning</li>
-  </ul>
-  </div>
+        <div class="portfolio-stack">
+          <article class="case-study">
+            <div class="case-meta">
+              <span class="case-type">Validated doctoral research</span>
+              <span>2026</span>
+            </div>
+            <div class="case-grid">
+              <div class="case-copy">
+                <h3>Noise-Optimized Routes for Air Taxi</h3>
+                <p>Developed a coupled vertiport-siting, route-network, trajectory-refinement, and acoustic-evaluation framework for Advanced Air Mobility. The model compares baseline, horizontal, altitude, and integrated routing candidates under efficiency, balanced, noise, and sensitive-receptor priorities.</p>
+                <p class="case-result">Result: noise-priority solutions reduced class-balanced Lmax,95 by up to approximately 3.9 dB and SEL95/EPNL95 by approximately 6 dB, while preserving origin-destination structure at a modest route-length cost.</p>
+                <a class="text-link" href="https://commons.erau.edu/edt/1007/" target="_blank" rel="noopener">Read the dissertation record <span aria-hidden="true">↗</span></a>
+              </div>
+              <div class="case-metrics" role="group" aria-label="Dissertation project metrics">
+                <div><strong>20</strong><span>directed routes evaluated</span></div>
+                <div><strong>3</strong><span>receptor classes: schools, hospitals, residences</span></div>
+                <div><strong>4</strong><span>decision priorities evaluated</span></div>
+                <div><strong>3</strong><span>acoustic metrics: Lmax, SEL, EPNL</span></div>
+              </div>
+            </div>
+          </article>
 
-  <div class="entry">
-  <div class="entry-head">
-  <div>
-  <div class="entry-title">Engineering Intern</div>
-  <div class="entry-org">WAPDA Hydel Training Center, Mangla, Pakistan</div>
-</div>
-<div class="entry-date">Jul - Aug 2014</div>
-</div>
-  <ul>
-  <li>Trained at the Mangla Power Station and 600 MW grid station on hydroelectric generation, turbines, transformers, and grid operations</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="publications">
-<div class="wrap">
-<h2>Selected Publications</h2>
+          <article class="case-study concept-case">
+            <div class="case-meta">
+              <span class="case-type">Reference architecture · Design targets</span>
+              <span>System concept</span>
+            </div>
+            <div class="case-grid">
+              <div class="case-copy">
+                <h3>Oceanic Constraint Ingestion Engine</h3>
+                <p>A production-oriented API architecture for ingesting NOTAMs, SIGMETs, FIR restrictions, and organized-track messages; resolving temporal and spatial validity; and publishing normalized constraints to a dynamic route graph.</p>
+                <p class="case-result">Design intent: separate source adapters from a canonical constraint model, retain rule provenance, and propagate time-bounded edge changes fast enough for dispatch re-evaluation without sacrificing auditability.</p>
+                <a class="text-link" href="mailto:waleedraza93@gmail.com?subject=Oceanic%20routing%20constraint%20architecture">Discuss the architecture <span aria-hidden="true">→</span></a>
+              </div>
+              <div class="case-metrics" role="group" aria-label="Architecture design targets">
+                <div><strong>&lt;1 s</strong><span>ingestion-to-graph propagation target</span></div>
+                <div><strong>4</strong><span>constraint families normalized</span></div>
+                <div><strong>100%</strong><span>source-lineage retention target</span></div>
+                <div><strong>24/7</strong><span>continuous operational update model</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <h3 style="font-size:1rem; text-transform:uppercase; letter-spacing:0.6px; color:var(--text-muted); margin-bottom:6px;">Journal Articles</h3>
-  <ul class="pub-list">
-  <li>
-  <span class="pub-tag">2026</span>
-  Kamal Acharya, <strong>Waleed Raza</strong>, Katherine Vasiloff, Zhenbo Wang, Liang Sun, Houbing Herbert Song.
-"Demand Modeling for Advanced Air Mobility: Challenges, Opportunities, and Future Directions."
-  <span class="pub-venue">IEEE Transactions on Intelligent Transportation Systems</span>, vol. 27, pp. 7454-7474.
-  <a href="https://doi.org/10.1109/TITS.2026.3671002" target="_blank" rel="noopener">DOI</a>
-  </li>
-  <li>
-  <span class="pub-tag">2025</span>
-  <strong>Waleed Raza</strong>, Richard S. Stansbury.
-  "Noise Prediction and Mitigation for UAS and eVTOL Aircraft: A Survey."
-  <span class="pub-venue">Drones</span>, vol. 9.
-  <a href="https://doi.org/10.3390/drones9080577" target="_blank" rel="noopener">DOI</a>
-  </li>
-  <li>
-  <span class="pub-tag">2025</span>
-  <strong>Waleed Raza</strong>, Justus Renkhoff, Olayemi Ogirimah, Gurvir Kaur Bawa, Richard S. Stansbury.
-  "Advanced Air Mobility: Innovations, Applications, Challenges, and Future Potential."
-  <span class="pub-venue">Journal of Air Transportation</span>, AIAA, pp. 1-18.
-  <a href="https://doi.org/10.2514/1.D0440" target="_blank" rel="noopener">DOI</a>
-  </li>
-  <li>
-  <span class="pub-tag">2023</span>
-  <strong>Waleed Raza</strong>, Justus Renkhoff, Olayemi Ogirimah, Richard S. Stansbury, Houbing Song.
-  "Flight Data Recorders: Past, Present, and Future."
-  <span class="pub-venue">IEEE Aerospace and Electronic Systems Magazine</span>, pp. 1-21.
-  <a href="https://doi.org/10.1109/MAES.2023.3335333" target="_blank" rel="noopener">DOI</a>
-  <div class="pub-award">Best of Session Paper Award, 43rd DASC, 2024</div>
-  </li>
-  <li>
-<span class="pub-tag">2023</span>
-  <strong>Waleed Raza</strong>, Xuefei Ma, Houbing Song, Amir Ali, Habib Zubairi, Kamal Acharya.
-  "Long Short-Term Memory Neural Network Assisted Peak to Average Power Ratio Reduction for Underwater Acoustic OFDM Communication."
-  <span class="pub-venue">KSII Transactions on Internet &amp; Information Systems</span>, vol. 17.
-  </li>
-  <li>
-  <span class="pub-tag">2023</span>
-  Kamal Acharya, <strong>Waleed Raza</strong>, Carlos Dourado, Alvaro Velasquez, Houbing Herbert Song.
-  "Neurosymbolic Reinforcement Learning and Planning: A Survey."
-  <span class="pub-venue">IEEE Transactions on Artificial Intelligence</span>, vol. 1, pp. 1-14.
-  </li>
-  <li>
-  <span class="pub-tag">2021</span>
-  <strong>Waleed Raza</strong>, Xuefei Ma, Amir Ali, A. Raza, S. Shaikh.
-  "Performance Analysis of Selective Mapping in Underwater Acoustic OFDM Communication System."
-  <span class="pub-venue">Engineering, Technology &amp; Applied Science Research</span>, vol. 11, pp. 6696-6702.
-  </li>
-  <li>
-  <span class="pub-tag">2020</span>
-  <strong>Waleed Raza</strong>, Xuefei Ma, Amir Ali, Zubair Ali Shah, Ghazanfar Mehdi.
-  "An Implementation of Partial Transmit Sequences to Design Energy Efficient Underwater Acoustic OFDM Communication System."
-  <span class="pub-venue">arXiv preprint arXiv:2007.01273</span>.
-  </li>
-  <li>
-  <span class="pub-tag">2020</span>
-  Xuefei Ma, <strong>Waleed Raza</strong>, Zhiqiang Wu, Muhammad Bilal, Ziqi Zhou, Amir Ali.
-  "A Nonlinear Distortion Removal Based on Deep Neural Network for Underwater Acoustic OFDM Communication with the Mitigation of Peak to Average Power Ratio."
-  <span class="pub-venue">Applied Sciences</span>, vol. 10, p. 4986, MDPI.
-  </li>
-  </ul>
-  <h3 style="font-size:1rem; text-transform:uppercase; letter-spacing:0.6px; color:var(--text-muted); margin:26px 0 6px;">Conference Proceedings</h3>
-  <ul class="pub-list">
-  <li>
-  <span class="pub-tag">2026</span>
-  <strong>Waleed Raza</strong>, Richard S. Stansbury, Kanchon Gharami.
-  "A Comparative Study of Vision-Based Detect and Avoid for Urban Air Mobility."
-  <span class="pub-venue">AIAA SciTech 2026 Forum</span>.
-  </li>
-  <li>
-  <span class="pub-tag">2021</span>
-  <strong>Waleed Raza</strong>, Xuefei Ma, Muhammad Bilal.
-  "Long Short-Term Memory Neural Network Assisted Peak to Average Power Ratio Reduction for Underwater Acoustic OFDM Communication."
-  <span class="pub-venue">Journal of the Acoustical Society of America</span>, vol. 150, pp. A319.
-  </li>
-  <li>
-  <span class="pub-tag">2019</span>
-  <strong>Waleed Raza</strong>, Xuefei Ma, Tingting Wang, Muhammad Bilal.
-  "Low Complexity Energy Efficient OFDM Communication System over Underwater Acoustic Channel by Partial Transmit Sequence PAPR Reduction."
-  <span class="pub-venue">Journal of the Acoustical Society of America</span>, vol. 146, pp. 2764-2765.
-  </li>
-  </ul>
+    <section class="section section-alt" id="research">
+      <div class="shell research-grid">
+        <div>
+          <p class="section-index">04 / Research credentials</p>
+          <h2>Deep technical work, communicated for decisions.</h2>
+          <p class="research-intro">Ph.D. in Electrical Engineering and Computer Science from Embry-Riddle Aeronautical University, with research spanning Advanced Air Mobility, UAS integration, aviation safety, flight data recorders, acoustic modeling, detect-and-avoid, and demand modeling.</p>
+          <div class="credential-actions">
+            <a class="button button-primary" href="cv.html">View / Print CV</a>
+            <a class="button button-secondary" href="https://scholar.google.com/citations?user=qOyRccEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          </div>
+        </div>
+        <div class="publication-list">
+          <article>
+            <span>2026 · IEEE T-ITS</span>
+            <h3>Demand Modeling for Advanced Air Mobility: Challenges, Opportunities, and Future Directions</h3>
+          </article>
+          <article>
+            <span>2025 · Drones</span>
+            <h3>Noise Prediction and Mitigation for UAS and eVTOL Aircraft: A Survey</h3>
+            <a href="https://doi.org/10.3390/drones9080577" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI ↗</a>
+          </article>
+          <article>
+            <span>2025 · AIAA Journal of Air Transportation</span>
+            <h3>Advanced Air Mobility: Innovations, Applications, Challenges, and Future Potential</h3>
+            <a href="https://doi.org/10.2514/1.D0440" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI ↗</a>
+          </article>
+          <article>
+            <span>2023 · IEEE Aerospace and Electronic Systems Magazine</span>
+            <h3>Flight Data Recorders: Past, Present, and Future</h3>
+            <a href="https://doi.org/10.1109/MAES.2023.3335333" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div style="margin-top:20px;">
-  <a href="https://scholar.google.com/citations?user=qOyRccEAAAAJ&hl=en" target="_blank" rel="noopener">Full list on Google Scholar</a>
-&nbsp;&middot;&nbsp;
-<a href="https://www.researchgate.net/profile/Waleed-Raza-3" target="_blank" rel="noopener">ResearchGate</a>
-  </div>
-  </div>
-  </section>
-  <section id="awards">
-  <div class="wrap">
-  <h2>Awards, Honors &amp; Fellowships</h2>
-  <ul class="service-list">
-  <li><strong>Best of Session Paper Award</strong>, 43rd Digital Avionics Systems Conference (DASC), San Diego, CA, 2024, for "Identify Flight Recorder Requirements for UAS Integration Into the National Airspace System"</li>
-  <li><strong>International Student Role Model</strong>, Harbin Engineering University, Nov 2022 (<a href="https://mp.weixin.qq.com/s/7thZyc-lahwSbH5U-ufO9Q" target="_blank" rel="noopener">read the feature</a>)</li>
-<li><strong>Featured in Xinhua News Agency</strong>, China's state news agency, Feb 2020 - profiled in "We Are All Safe in China: The Pandemic-Prevention Life of Three Foreign Nationals," covering international students and professionals in China during the early COVID-19 outbreak (<a href="https://h.xinhuaxmt.com/vh512/share/8847603" target="_blank" rel="noopener">read the feature</a>)</li>
-  <li><strong>ANSO Scholarship for Young Talents</strong>, Alliance of International Science Organizations, 2021</li>
-  <li><strong>China Scholarship Council</strong> award (Ministry of Commerce, PRC) for M.Eng. study and research at Harbin Engineering University, 2018-2021</li>
-  <li><strong>Meritorious Honor Award</strong>, Harbin Engineering University, 2020</li>
-  <li><strong>HEU Travel Grant</strong>, Harbin Engineering University, 2019</li>
-  </ul>
-  </div>
-  </section>
-  <section id="service">
-  <div class="wrap">
-  <h2>Professional Service &amp; Skills</h2>
-
-  <div class="grid-2">
-  <div>
-  <div class="entry-title" style="margin-bottom:10px;">Technical Reviewer (Invited)</div>
-  <ul class="service-list">
-  <li><strong>Springer Nature:</strong> Wireless Personal Communications, Computers and Electrical Engineering, The Journal of Supercomputing, AEU - Int'l Journal of Electronics and Communications, Scientific Reports</li>
-  <li><strong>IEEE:</strong> IEEE Sensors Journal</li>
-  <li><strong>MDPI:</strong> Journal of Marine Science and Engineering, Remote Sensing, Ocean, Applied Sciences, Water</li>
-  <li><strong>ETASR</strong> and <strong>IWCMC</strong> (invited, 2023)</li>
-  </ul>
-  <div class="entry-title" style="margin:18px 0 10px;">Affiliations &amp; Roles</div>
-  <ul class="service-list">
-  <li>Editorial Board Member, Engineering, Technology &amp; Applied Science Research (ETASR), Greece - since 2021</li>
-  <li>IEEE Graduate Student Member, IEEE Daytona Beach Section - since December 2022</li>
-  <li>Registered Engineer, Pakistan Engineering Council - since 2017</li>
-  </ul>
-  <div class="entry-title" style="margin:18px 0 10px;">Peer Review Service</div>
-<p style="font-size:0.92rem; color:var(--text-muted); margin:0 0 8px;">52 reviews across 11 publications/grants (per <a href="https://orcid.org/0000-0002-4142-3195" target="_blank" rel="noopener">ORCID record</a>)</p>
-  <div class="chip-row">
-  <span class="chip">J. Marine Science &amp; Eng. (17)</span>
-  <span class="chip">Remote Sensing (14)</span>
-  <span class="chip">IEEE Sensors Journal (4)</span>
-  <span class="chip">Sensors (3)</span>
-  <span class="chip">Electronics (3)</span>
-  <span class="chip">Information (3)</span>
-  <span class="chip">Applied Sciences (2)</span>
-  <span class="chip">Computers &amp; Electrical Eng. (2)</span>
-  <span class="chip">Oceans (2)</span>
-  <span class="chip">IEEE Access (1)</span>
-  <span class="chip">IEEE Internet of Things J. (1)</span>
-  </div>
-  </div>
-  <div>
-  <div class="skill-group">
-  <div class="label">Programming &amp; Tools</div>
-  <div class="chip-row">
-  <span class="chip">Python</span><span class="chip">MATLAB</span><span class="chip">LaTeX</span>
-  <span class="chip">PyTorch</span><span class="chip">Ultralytics YOLO</span><span class="chip">OpenCV</span>
-  <span class="chip">NumPy / SciPy / Pandas</span><span class="chip">Jupyter</span><span class="chip">Linux / Ubuntu</span>
-  </div>
-  </div>
-  <div class="skill-group">
-  <div class="label">Geospatial &amp; Optimization</div>
-  <div class="chip-row">
-  <span class="chip">GeoPandas</span><span class="chip">QGIS</span><span class="chip">ArcGIS</span>
-  <span class="chip">NetworkX</span><span class="chip">Pyomo</span><span class="chip">HiGHS</span>
-  </div>
-  </div>
-  <div class="skill-group">
-  <div class="label">Research Methods</div>
-  <div class="chip-row">
-  <span class="chip">Route Optimization</span><span class="chip">Trajectory Analysis</span>
-  <span class="chip">Signal Processing</span><span class="chip">Machine Learning</span>
-  <span class="chip">Simulation</span><span class="chip">Statistical Analysis</span>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </section>
-  <section id="contact">
-  <div class="wrap">
-  <h2>Contact</h2>
-  <p>Based in Daytona Beach, FL. Open to discussing research collaboration, air traffic management, airspace systems engineering, and UAS/AAM operations research opportunities.</p>
-  <div class="contact-links">
-  <a href="mailto:razaw@my.erau.edu">razaw@my.erau.edu</a>
-  <a href="mailto:waleedraza93@gmail.com">waleedraza93@gmail.com</a>
-  <a href="https://linkedin.com/in/waleed-raza-b4690953" target="_blank" rel="noopener">LinkedIn</a>
-  <a href="https://scholar.google.com/citations?user=qOyRccEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-  <a href="https://orcid.org/0000-0002-4142-3195" target="_blank" rel="noopener">ORCID</a>
-  <a href="https://www.researchgate.net/profile/Waleed-Raza-3" target="_blank" rel="noopener">ResearchGate</a>
-  <a href="https://adscientificindex.com/scientist/waleed-raza/5152049/" target="_blank" rel="noopener">AD Scientific Index</a>
-  <a href="https://github.com/raza-waleed" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  </div>
-  </section>
+    <section class="section contact-section" id="contact">
+      <div class="shell contact-grid">
+        <div>
+          <p class="section-index">05 / Contact</p>
+          <h2>Bring a difficult routing problem.</h2>
+        </div>
+        <div>
+          <p>Available for aviation routing architecture, airspace systems research, technical consulting conversations, and academic collaboration.</p>
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:waleedraza93@gmail.com?subject=Aviation%20routing%20discussion">waleedraza93@gmail.com</a>
+            <a class="button button-secondary" href="https://linkedin.com/in/waleed-raza-b4690953" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="profile-links">
+            <a href="https://orcid.org/0000-0002-4142-3195" target="_blank" rel="noopener">ORCID</a>
+            <a href="https://www.researchgate.net/profile/Waleed-Raza-3" target="_blank" rel="noopener">ResearchGate</a>
+            <a href="https://github.com/raza-waleed" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-  <div class="wrap">
-  &copy; <span id="year"></span> Waleed Raza. Built with plain HTML &amp; CSS, hosted on GitHub Pages.
-  </div>
+    <div class="shell footer-inner">
+      <span>&copy; <span id="year"></span> Waleed Raza</span>
+      <span>Routing clarity through aerospace rigor.</span>
+    </div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  </body>
-  </html>
-  
+</body>
+</html>
