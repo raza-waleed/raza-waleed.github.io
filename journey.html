@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<title>Career Flight Path</title>
+<title>Career Flight Path Refined</title>
 <style>:root {
   color-scheme: light dark;
   background-color: transparent !important;
@@ -853,6 +853,12 @@ svg {
       stroke: var(--viz-series-1);
       stroke-width: 3;
     }
+    #career-flight-path .cfp-route-assignment {
+      fill: none;
+      stroke: var(--viz-series-2);
+      stroke-width: 2;
+      stroke-dasharray: 6 5;
+    }
     #career-flight-path .cfp-route-shadow {
       fill: none;
       stroke: var(--background);
@@ -866,6 +872,10 @@ svg {
     #career-flight-path .cfp-point.is-active {
       fill: var(--primary);
       stroke: var(--primary-foreground);
+      stroke-width: 2;
+    }
+    #career-flight-path .cfp-point-assignment {
+      stroke: var(--viz-series-2);
       stroke-width: 2;
     }
     #career-flight-path .cfp-marker {
@@ -900,6 +910,29 @@ svg {
     #career-flight-path .cfp-marker[aria-pressed="true"]::before {
       background: var(--primary-foreground);
     }
+    #career-flight-path .cfp-marker[data-id="pano"] { transform: translate(-92%, -145%); }
+    #career-flight-path .cfp-marker[data-id="karachi"] { transform: translate(-12%, 28%); }
+    #career-flight-path .cfp-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      margin-top: 0.75rem;
+      color: var(--muted-foreground);
+    }
+    #career-flight-path .cfp-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    #career-flight-path .cfp-legend span::before {
+      content: "";
+      width: 1.8rem;
+      border-top: 2px solid var(--viz-series-1);
+    }
+    #career-flight-path .cfp-legend .cfp-assignment-key::before {
+      border-top-color: var(--viz-series-2);
+      border-top-style: dashed;
+    }
     #career-flight-path .cfp-detail { margin-top: 1rem; }
     #career-flight-path .cfp-detail-head {
       display: flex;
@@ -913,7 +946,7 @@ svg {
     #career-flight-path .cfp-detail p { margin: 0; }
     #career-flight-path .cfp-timeline {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       margin-top: 1rem;
       border-top: 1px solid var(--border);
     }
@@ -961,8 +994,8 @@ svg {
       #career-flight-path .cfp-map { min-height: 310px; }
       #career-flight-path .cfp-timeline { grid-template-columns: 1fr 1fr; row-gap: 1rem; }
       #career-flight-path .cfp-marker { padding: 0.25rem 0.4rem; }
-      #career-flight-path .cfp-marker[data-id="pano"] { transform: translate(-58%, -145%); }
-      #career-flight-path .cfp-marker[data-id="karachi"] { transform: translate(-30%, 28%); }
+      #career-flight-path .cfp-marker[data-id="pano"] { transform: translate(-68%, -155%); }
+      #career-flight-path .cfp-marker[data-id="karachi"] { transform: translate(-18%, 35%); }
     }
     @media (max-width: 390px) {
       #career-flight-path .cfp-marker { font-size: 0.8em; }
@@ -973,9 +1006,9 @@ svg {
 
   <div class="viz-grid cfp-stats" role="group" aria-label="Journey summary">
     <div class="card viz-stat">
-      <div class="text-muted">Career locations</div>
-      <div class="viz-stat-value">4</div>
-      <div class="text-small">Pano Aqil to Daytona Beach</div>
+      <div class="text-muted">Mapped locations</div>
+      <div class="viz-stat-value">6</div>
+      <div class="text-small">Four anchors · two training assignments</div>
     </div>
     <div class="card viz-stat">
       <div class="text-muted">Countries</div>
@@ -992,7 +1025,7 @@ svg {
   <div class="cfp-map-wrap">
     <svg class="cfp-map" viewBox="0 0 1100 520" role="img" aria-labelledby="cfp-map-title cfp-map-desc">
       <title id="cfp-map-title">Waleed Raza's geospatial career journey</title>
-      <desc id="cfp-map-desc">A world map showing a career route from Pano Aqil to Karachi, Harbin, and Daytona Beach.</desc>
+      <desc id="cfp-map-desc">A world map showing the principal career route from Pano Aqil to Karachi, Harbin, and Daytona Beach, with technical training assignments in Mangla and Lahore.</desc>
       <g data-layer="graticule"></g>
       <g data-layer="land"></g>
       <g data-layer="routes"></g>
@@ -1004,23 +1037,30 @@ svg {
     <button class="cfp-marker" type="button" data-id="daytona" aria-pressed="false">Daytona Beach</button>
   </div>
 
+  <div class="cfp-legend text-small" role="group" aria-label="Route legend">
+    <span>Primary academic and professional route</span>
+    <span class="cfp-assignment-key">Technical training assignment</span>
+  </div>
+
   <div class="card cfp-detail" aria-live="polite">
     <div class="cfp-detail-head">
-      <h3 data-detail-title>Pano Aqil · Foundation</h3>
-      <span class="viz-badge" data-detail-date>Foundation years</span>
+      <h3 data-detail-title>Pano Aqil · Academic foundation</h3>
+      <span class="viz-badge" data-detail-date>Secondary education</span>
     </div>
-    <p data-detail-copy>Born and completed high school in Pano Aqil, Sindh, Pakistan—the geographic starting point of the journey.</p>
+    <p data-detail-copy>Completed secondary education in Pano Aqil, Sindh, Pakistan, establishing the academic foundation for an engineering and research career spanning three countries.</p>
   </div>
 
   <div class="cfp-timeline" role="group" aria-label="Career journey timeline">
-    <button class="cfp-step" type="button" data-id="pano" aria-pressed="true"><strong>Foundation years</strong><span class="text-small">Pano Aqil · High school</span></button>
-    <button class="cfp-step" type="button" data-id="karachi" aria-pressed="false"><strong>2013–2018</strong><span class="text-small">Karachi · B.E. + engineering</span></button>
-    <button class="cfp-step" type="button" data-id="harbin" aria-pressed="false"><strong>2018–2021</strong><span class="text-small">Harbin · CSC + M.Eng.</span></button>
+    <button class="cfp-step" type="button" data-id="pano" aria-pressed="true"><strong>Secondary education</strong><span class="text-small">Pano Aqil · Academic foundation</span></button>
+    <button class="cfp-step" type="button" data-id="karachi" aria-pressed="false"><strong>2013–2018</strong><span class="text-small">Karachi · B.E. and field engineering</span></button>
+    <button class="cfp-step" type="button" data-id="mangla" aria-pressed="false"><strong>Jul–Aug 2014</strong><span class="text-small">Mangla · Hydropower training</span></button>
+    <button class="cfp-step" type="button" data-id="lahore" aria-pressed="false"><strong>Jun–Jul 2015</strong><span class="text-small">Lahore · Telecom engineering</span></button>
+    <button class="cfp-step" type="button" data-id="harbin" aria-pressed="false"><strong>2018–2021</strong><span class="text-small">Harbin · CSC-supported M.Eng.</span></button>
     <button class="cfp-step" type="button" data-id="daytona" aria-pressed="false"><strong>2022–2026</strong><span class="text-small">Daytona Beach · Ph.D.</span></button>
   </div>
 
   <div class="cfp-source-row text-small">
-    <span>Profile basis:</span>
+    <span>Evidence sources:</span>
     <a href="https://raza-waleed.github.io/cv.html" target="_blank" rel="noopener">CV</a>
     <a href="https://orcid.org/0000-0002-4142-3195" target="_blank" rel="noopener">ORCID</a>
     <a href="https://www.researchgate.net/profile/Waleed-Raza-3" target="_blank" rel="noopener">ResearchGate</a>
@@ -1044,36 +1084,60 @@ svg {
       {
         id: "pano",
         city: "Pano Aqil",
-        title: "Pano Aqil · Foundation",
-        date: "Foundation years",
+        type: "anchor",
+        title: "Pano Aqil · Academic foundation",
+        date: "Secondary education",
         coordinates: [69.11111, 27.85619],
-        copy: "Born and completed high school in Pano Aqil, Sindh, Pakistan—the geographic starting point of the journey."
+        copy: "Completed secondary education in Pano Aqil, Sindh, Pakistan, establishing the academic foundation for an engineering and research career spanning three countries."
       },
       {
         id: "karachi",
         city: "Karachi",
+        type: "anchor",
         title: "Karachi · Engineering foundation",
         date: "2013–2018",
         coordinates: [67.01, 24.86],
-        copy: "Earned a B.E. in Electronic Engineering at Dawood University of Engineering and Technology from 2013 to 2016. During this period, completed engineering training with WAPDA in Mangla (Jul–Aug 2014) and KNSTEL in Lahore (Jun–Jul 2015), followed by field engineering work with K-Electric in Karachi (Jul 2016–Sep 2018)."
+        copy: "Completed a B.E. in Electronic Engineering at Dawood University of Engineering and Technology (Jan 2013–Dec 2016), then applied that foundation in electrical testing, load distribution, phase balancing, and cable-fault localization with K-Electric (Jul 2016–Sep 2018)."
+      },
+      {
+        id: "mangla",
+        city: "Mangla",
+        type: "assignment",
+        title: "Mangla · Hydropower systems training",
+        date: "Jul–Aug 2014",
+        coordinates: [73.645, 33.1421],
+        copy: "Completed technical training with the WAPDA Hydel Training Center at Mangla Power Station, covering hydroelectric generation, turbines, transformers, switchyards, and grid operations."
+      },
+      {
+        id: "lahore",
+        city: "Lahore",
+        type: "assignment",
+        title: "Lahore · Telecommunications engineering",
+        date: "Jun–Jul 2015",
+        coordinates: [74.329376, 31.582045],
+        copy: "Completed an engineering internship with KNSTEL, supporting Huawei 3G equipment installation and commissioning for Telenor and Mobilink network projects."
       },
       {
         id: "harbin",
         city: "Harbin",
+        type: "anchor",
         title: "Harbin · Research specialization",
         date: "2018–2021",
         coordinates: [126.633331, 45.75],
-        copy: "Completed an M.Eng. in Underwater Acoustics Engineering at Harbin Engineering University through the China Scholarship Council (Sep 2018–Mar 2021), developing expertise in acoustic OFDM, signal processing, and machine learning; received an HEU Travel Grant in 2019 and Meritorious Honor Award in 2020."
+        copy: "Completed an M.Eng. in Underwater Acoustics Engineering at Harbin Engineering University with China Scholarship Council support (Sep 2018–Mar 2021), advancing research in acoustic OFDM, signal processing, and machine learning; received an HEU Travel Grant in 2019 and Meritorious Honor Award in 2020."
       },
       {
         id: "daytona",
         city: "Daytona Beach",
+        type: "anchor",
         title: "Daytona Beach · Aviation routing",
         date: "2022–2026",
         coordinates: [-81.031723, 29.218103],
-        copy: "Completed a Ph.D. in Electrical Engineering and Computer Science at Embry-Riddle Aeronautical University (Aug 2022–Jul 2026), received a Best of Session Paper Award at DASC 2024, and culminated the research journey with the dissertation “Noise-Optimized Routes for Air Taxi.”"
+        copy: "Completed a Ph.D. in Electrical Engineering and Computer Science at Embry-Riddle Aeronautical University (Aug 2022–Jul 2026), received a Best of Session Paper Award at DASC 2024, and developed the dissertation “Noise-Optimized Routes for Air Taxi.”"
       }
     ];
+    const primaryRouteIds = ["pano", "karachi", "harbin", "daytona"];
+    const assignmentRouteIds = [["karachi", "mangla"], ["karachi", "lahore"]];
 
     function appendPath(layer, datum, className) {
       const el = document.createElementNS(ns, "path");
@@ -1098,6 +1162,7 @@ svg {
       const offsetY = (rect.height - height * scale) / 2;
       projectedPoints.forEach((point, id) => {
         const marker = root.querySelector('.cfp-marker[data-id="' + id + '"]');
+        if (!marker) return;
         marker.style.left = (offsetX + point[0] * scale) + "px";
         marker.style.top = (offsetY + point[1] * scale) + "px";
       });
@@ -1108,11 +1173,18 @@ svg {
       appendPath(root.querySelector('[data-layer="graticule"]'), geoGraticule10(), "cfp-graticule");
       countries.forEach((country) => appendPath(root.querySelector('[data-layer="land"]'), country, "cfp-land"));
 
-      for (let index = 0; index < stops.length - 1; index += 1) {
-        const segment = geodesic(stops[index].coordinates, stops[index + 1].coordinates);
+      const stopById = new Map(stops.map((stop) => [stop.id, stop]));
+      for (let index = 0; index < primaryRouteIds.length - 1; index += 1) {
+        const from = stopById.get(primaryRouteIds[index]);
+        const to = stopById.get(primaryRouteIds[index + 1]);
+        const segment = geodesic(from.coordinates, to.coordinates);
         appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-shadow");
         appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route");
       }
+      assignmentRouteIds.forEach(([fromId, toId]) => {
+        const segment = geodesic(stopById.get(fromId).coordinates, stopById.get(toId).coordinates);
+        appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-assignment");
+      });
 
       stops.forEach((stop) => {
         const point = projection(stop.coordinates);
@@ -1120,8 +1192,8 @@ svg {
         const circle = document.createElementNS(ns, "circle");
         circle.setAttribute("cx", point[0]);
         circle.setAttribute("cy", point[1]);
-        circle.setAttribute("r", stop.id === "pano" ? "8" : "7");
-        circle.setAttribute("class", "cfp-point" + (stop.id === "pano" ? " is-active" : ""));
+        circle.setAttribute("r", stop.type === "assignment" ? "5" : stop.id === "pano" ? "8" : "7");
+        circle.setAttribute("class", "cfp-point" + (stop.type === "assignment" ? " cfp-point-assignment" : "") + (stop.id === "pano" ? " is-active" : ""));
         circle.setAttribute("data-id", stop.id);
         root.querySelector('[data-layer="points"]').appendChild(circle);
       });
