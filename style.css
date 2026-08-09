@@ -217,7 +217,10 @@ a:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
 .case-metrics div:nth-last-child(-n+2) { border-bottom: 0; }
 .case-metrics strong { color: var(--ink-strong); font-family: "SFMono-Regular", Consolas, monospace; font-size: 1.6rem; }
 .case-metrics span { margin-top: 6px; color: var(--muted); font-size: 0.72rem; line-height: 1.35; text-transform: uppercase; }
-.concept-case .case-type, .concept-case .text-link { color: var(--lime); }
+.methods-case .case-type, .methods-case .text-link { color: var(--lime); }
+.method-metrics div { min-height: 190px; justify-content: flex-start; }
+.method-metrics b { display: block; margin-bottom: 7px; color: var(--ink-strong); font-size: 0.76rem; letter-spacing: 0.01em; text-transform: none; }
+.method-metrics span { line-height: 1.5; text-transform: none; }
 
 .research-grid { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 100px; }
 .research-intro { margin-top: 28px; max-width: 60ch; }
