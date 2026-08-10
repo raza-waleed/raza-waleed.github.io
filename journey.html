@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<title>Career Flight Path Refined</title>
+<title>Waleed Raza - Career Flight Path</title>
 <style>:root {
   color-scheme: light dark;
   background-color: transparent !important;
@@ -933,6 +933,19 @@ svg {
       border-top-color: var(--viz-series-2);
       border-top-style: dashed;
     }
+    #career-flight-path .cfp-plane {
+      fill: var(--background);
+      stroke: var(--viz-series-1);
+      stroke-width: 1.6;
+    }
+    #career-flight-path .cfp-airport-code {
+      font-family: var(--font-mono);
+      font-size: 0.82em;
+      font-weight: 400;
+      color: var(--muted-foreground);
+      margin-left: 0.35em;
+    }
+    #career-flight-path .cfp-marker[aria-pressed="true"] .cfp-airport-code { color: inherit; opacity: 0.75; }
     #career-flight-path .cfp-detail { margin-top: 1rem; }
     #career-flight-path .cfp-detail-head {
       display: flex;
@@ -942,6 +955,8 @@ svg {
       gap: 0.5rem 1rem;
       margin-bottom: 0.5rem;
     }
+    #career-flight-path .cfp-badge-row { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; }
+    #career-flight-path .cfp-badge-distance { color: var(--muted-foreground); background: transparent; border: 1px solid var(--border); }
     #career-flight-path .cfp-detail h3 { margin: 0; font-weight: 500; }
     #career-flight-path .cfp-detail p { margin: 0; }
     #career-flight-path .cfp-timeline {
@@ -1020,6 +1035,11 @@ svg {
       <div class="viz-stat-value">3</div>
       <div class="text-small">B.E. · M.Eng. · Ph.D.</div>
     </div>
+    <div class="card viz-stat">
+      <div class="text-muted">Career flight distance</div>
+      <div class="viz-stat-value" data-total-distance>—</div>
+      <div class="text-small" data-total-distance-note>Great-circle, primary route</div>
+    </div>
   </div>
 
   <div class="cfp-map-wrap">
@@ -1029,12 +1049,13 @@ svg {
       <g data-layer="graticule"></g>
       <g data-layer="land"></g>
       <g data-layer="routes"></g>
+      <g data-layer="planes"></g>
       <g data-layer="points"></g>
     </svg>
     <button class="cfp-marker" type="button" data-id="pano" aria-pressed="true">Pano Aqil</button>
-    <button class="cfp-marker" type="button" data-id="karachi" aria-pressed="false">Karachi</button>
-    <button class="cfp-marker" type="button" data-id="harbin" aria-pressed="false">Harbin</button>
-    <button class="cfp-marker" type="button" data-id="daytona" aria-pressed="false">Daytona Beach</button>
+    <button class="cfp-marker" type="button" data-id="karachi" aria-pressed="false">Karachi<span class="cfp-airport-code">KHI</span></button>
+    <button class="cfp-marker" type="button" data-id="harbin" aria-pressed="false">Harbin<span class="cfp-airport-code">HRB</span></button>
+    <button class="cfp-marker" type="button" data-id="daytona" aria-pressed="false">Daytona Beach<span class="cfp-airport-code">DAB</span></button>
   </div>
 
   <div class="cfp-legend text-small" role="group" aria-label="Route legend">
@@ -1045,18 +1066,21 @@ svg {
   <div class="card cfp-detail" aria-live="polite">
     <div class="cfp-detail-head">
       <h3 data-detail-title>Pano Aqil · Academic foundation</h3>
-      <span class="viz-badge" data-detail-date>Secondary education</span>
+      <span class="cfp-badge-row">
+        <span class="viz-badge" data-detail-date>Secondary education</span>
+        <span class="viz-badge cfp-badge-distance" data-detail-distance hidden></span>
+      </span>
     </div>
     <p data-detail-copy>Completed secondary education in Pano Aqil, Sindh, Pakistan, establishing the academic foundation for an engineering and research career spanning three countries.</p>
   </div>
 
   <div class="cfp-timeline" role="group" aria-label="Career journey timeline">
     <button class="cfp-step" type="button" data-id="pano" aria-pressed="true"><strong>Secondary education</strong><span class="text-small">Pano Aqil · Academic foundation</span></button>
-    <button class="cfp-step" type="button" data-id="karachi" aria-pressed="false"><strong>2013–2018</strong><span class="text-small">Karachi · B.E. and field engineering</span></button>
+    <button class="cfp-step" type="button" data-id="karachi" aria-pressed="false"><strong>2013–2018</strong><span class="text-small">Karachi (KHI) · B.E. and field engineering</span></button>
     <button class="cfp-step" type="button" data-id="mangla" aria-pressed="false"><strong>Jul–Aug 2014</strong><span class="text-small">Mangla · Hydropower training</span></button>
-    <button class="cfp-step" type="button" data-id="lahore" aria-pressed="false"><strong>Jun–Jul 2015</strong><span class="text-small">Lahore · Telecom engineering</span></button>
-    <button class="cfp-step" type="button" data-id="harbin" aria-pressed="false"><strong>2018–2021</strong><span class="text-small">Harbin · CSC-supported M.Eng.</span></button>
-    <button class="cfp-step" type="button" data-id="daytona" aria-pressed="false"><strong>2022–2026</strong><span class="text-small">Daytona Beach · Ph.D.</span></button>
+    <button class="cfp-step" type="button" data-id="lahore" aria-pressed="false"><strong>Jun–Jul 2015</strong><span class="text-small">Lahore (LHE) · Telecom engineering</span></button>
+    <button class="cfp-step" type="button" data-id="harbin" aria-pressed="false"><strong>2018–2021</strong><span class="text-small">Harbin (HRB) · CSC-supported M.Eng.</span></button>
+    <button class="cfp-step" type="button" data-id="daytona" aria-pressed="false"><strong>2022–2026</strong><span class="text-small">Daytona Beach (DAB) · Ph.D.</span></button>
   </div>
 
   <div class="cfp-source-row text-small">
@@ -1093,6 +1117,7 @@ svg {
       {
         id: "karachi",
         city: "Karachi",
+        code: "KHI",
         type: "anchor",
         title: "Karachi · Engineering foundation",
         date: "2013–2018",
@@ -1111,6 +1136,7 @@ svg {
       {
         id: "lahore",
         city: "Lahore",
+        code: "LHE",
         type: "assignment",
         title: "Lahore · Telecommunications engineering",
         date: "Jun–Jul 2015",
@@ -1120,6 +1146,7 @@ svg {
       {
         id: "harbin",
         city: "Harbin",
+        code: "HRB",
         type: "anchor",
         title: "Harbin · Research specialization",
         date: "2018–2021",
@@ -1129,6 +1156,7 @@ svg {
       {
         id: "daytona",
         city: "Daytona Beach",
+        code: "DAB",
         type: "anchor",
         title: "Daytona Beach · Aviation routing",
         date: "2022–2026",
@@ -1138,6 +1166,20 @@ svg {
     ];
     const primaryRouteIds = ["pano", "karachi", "harbin", "daytona"];
     const assignmentRouteIds = [["karachi", "mangla"], ["karachi", "lahore"]];
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function haversineKm(a, b) {
+      const R = 6371;
+      const toRad = (deg) => (deg * Math.PI) / 180;
+      const [lon1, lat1] = a;
+      const [lon2, lat2] = b;
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const sinLat = Math.sin(dLat / 2);
+      const sinLon = Math.sin(dLon / 2);
+      const h = sinLat * sinLat + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * sinLon * sinLon;
+      return 2 * R * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
+    }
 
     function appendPath(layer, datum, className) {
       const el = document.createElementNS(ns, "path");
@@ -1168,23 +1210,55 @@ svg {
       });
     }
 
+    function addPlane(segId, durationSeconds) {
+      const plane = document.createElementNS(ns, "path");
+      plane.setAttribute("d", "M -6,-3.2 L 7,0 L -6,3.2 L -3.4,0 Z");
+      plane.setAttribute("class", "cfp-plane");
+      const animate = document.createElementNS(ns, "animateMotion");
+      animate.setAttribute("dur", durationSeconds + "s");
+      animate.setAttribute("repeatCount", "indefinite");
+      animate.setAttribute("rotate", "auto");
+      const mpath = document.createElementNS(ns, "mpath");
+      mpath.setAttributeNS("http://www.w3.org/1999/xlink", "href", "#" + segId);
+      animate.appendChild(mpath);
+      plane.appendChild(animate);
+      root.querySelector('[data-layer="planes"]').appendChild(plane);
+    }
+
     function renderMap() {
       const countries = feature(world, world.objects.features).features;
       appendPath(root.querySelector('[data-layer="graticule"]'), geoGraticule10(), "cfp-graticule");
       countries.forEach((country) => appendPath(root.querySelector('[data-layer="land"]'), country, "cfp-land"));
 
       const stopById = new Map(stops.map((stop) => [stop.id, stop]));
+      let totalPrimaryKm = 0;
       for (let index = 0; index < primaryRouteIds.length - 1; index += 1) {
         const from = stopById.get(primaryRouteIds[index]);
         const to = stopById.get(primaryRouteIds[index + 1]);
+        const legKm = haversineKm(from.coordinates, to.coordinates);
+        to.distanceFromPrev = legKm;
+        totalPrimaryKm += legKm;
         const segment = geodesic(from.coordinates, to.coordinates);
         appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-shadow");
-        appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route");
+        const routePath = appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route");
+        const segId = "cfp-route-seg-" + index;
+        routePath.setAttribute("id", segId);
+        if (!reducedMotion) addPlane(segId, 7 + index * 1.5);
       }
       assignmentRouteIds.forEach(([fromId, toId]) => {
-        const segment = geodesic(stopById.get(fromId).coordinates, stopById.get(toId).coordinates);
+        const from = stopById.get(fromId);
+        const to = stopById.get(toId);
+        to.distanceFromPrev = haversineKm(from.coordinates, to.coordinates);
+        const segment = geodesic(from.coordinates, to.coordinates);
         appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-assignment");
       });
+
+      const totalEl = root.querySelector("[data-total-distance]");
+      if (totalEl) {
+        const pctEarth = (totalPrimaryKm / 40075) * 100;
+        totalEl.textContent = Math.round(totalPrimaryKm).toLocaleString() + " km";
+        root.querySelector("[data-total-distance-note]").textContent = "≈ " + pctEarth.toFixed(0) + "% of Earth's circumference";
+      }
 
       stops.forEach((stop) => {
         const point = projection(stop.coordinates);
@@ -1206,6 +1280,14 @@ svg {
       root.querySelector("[data-detail-title]").textContent = stop.title;
       root.querySelector("[data-detail-date]").textContent = stop.date;
       root.querySelector("[data-detail-copy]").textContent = stop.copy;
+      const distanceEl = root.querySelector("[data-detail-distance]");
+      if (stop.distanceFromPrev) {
+        const label = stop.type === "assignment" ? "round trip detour" : "flight leg";
+        distanceEl.textContent = Math.round(stop.distanceFromPrev).toLocaleString() + " km " + label;
+        distanceEl.hidden = false;
+      } else {
+        distanceEl.hidden = true;
+      }
       root.querySelectorAll("[data-id]").forEach((item) => {
         if (item.matches("button")) item.setAttribute("aria-pressed", item.dataset.id === id ? "true" : "false");
         if (item.matches("circle")) item.classList.toggle("is-active", item.dataset.id === id);
@@ -1232,243 +1314,5 @@ svg {
   </script>
 </div>
 
-<script id="codex-visualization-floating-ui-core" src="https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js"></script>
-<script id="codex-visualization-floating-ui-dom" src="https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js"></script>
-<script id="codex-visualization-lucide" async src="https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js"></script>
-<script id="codex-visualization-tooltip">/* oxlint-disable typescript/no-unsafe-argument, typescript/no-unsafe-call, typescript/no-unsafe-return */
-// Runs inside the visualization sandbox, not the host webview.
-(() => {
-  if (window.FloatingUIDOM == null) {
-    return;
-  }
-  const { autoUpdate, computePosition, flip, offset, shift, size } =
-    window.FloatingUIDOM;
-  const tooltipPlacements = new Set(["top", "right", "bottom", "left"]);
-  const tooltipId = `codex-visualization-tooltip-${
-    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
-  }`;
-  const tooltipGap = 5;
-  const hoverDelay = 700;
-  const skipDelay = 300;
-  let activeTrigger = null;
-  let pendingTrigger = null;
-  let tooltip = null;
-  let openTimeout = null;
-  let autoUpdateCleanup = null;
-  let positionRequest = 0;
-  let skipDelayUntil = 0;
-
-  const getTrigger = (target) =>
-    target?.nodeType === Node.ELEMENT_NODE
-      ? target.closest("[data-tooltip]")
-      : null;
-  const containsTarget = (trigger, target) =>
-    target?.nodeType != null && trigger.contains(target);
-  const getContent = (trigger) =>
-    trigger.getAttribute("data-tooltip")?.trim() ?? "";
-  const getPlacement = (trigger) => {
-    const placement = trigger.getAttribute("data-tooltip-placement");
-    return tooltipPlacements.has(placement) ? placement : "top";
-  };
-  const getTooltip = () => {
-    if (tooltip == null) {
-      tooltip = document.createElement("div");
-      tooltip.id = tooltipId;
-      tooltip.className = "tooltip";
-      tooltip.setAttribute("role", "tooltip");
-    }
-    return tooltip;
-  };
-  const setDescribedBy = (trigger, described) => {
-    const ids = new Set(
-      (trigger.getAttribute("aria-describedby") ?? "")
-        .split(/\s+/)
-        .filter(Boolean),
-    );
-    if (described) {
-      ids.add(tooltipId);
-    } else {
-      ids.delete(tooltipId);
-    }
-    if (ids.size === 0) {
-      trigger.removeAttribute("aria-describedby");
-    } else {
-      trigger.setAttribute("aria-describedby", [...ids].join(" "));
-    }
-  };
-  const clearOpenTimeout = () => {
-    if (openTimeout != null) {
-      window.clearTimeout(openTimeout);
-      openTimeout = null;
-    }
-    pendingTrigger = null;
-  };
-  const closeTooltip = (activateSkipDelay = true) => {
-    clearOpenTimeout();
-    positionRequest += 1;
-    autoUpdateCleanup?.();
-    autoUpdateCleanup = null;
-    if (activeTrigger == null) {
-      return;
-    }
-    setDescribedBy(activeTrigger, false);
-    activeTrigger = null;
-    tooltip?.remove();
-    if (activateSkipDelay) {
-      skipDelayUntil = Date.now() + skipDelay;
-    }
-  };
-  const updatePosition = (trigger, floating) => {
-    const request = ++positionRequest;
-    void computePosition(trigger, floating, {
-      middleware: [
-        offset(tooltipGap),
-        flip({ padding: tooltipGap }),
-        shift({ padding: tooltipGap }),
-        size({
-          padding: tooltipGap,
-          apply({ availableHeight, availableWidth, elements }) {
-            elements.floating.style.setProperty(
-              "--tooltip-available-width",
-              `${Math.max(0, availableWidth)}px`,
-            );
-            elements.floating.style.setProperty(
-              "--tooltip-available-height",
-              `${Math.max(0, availableHeight)}px`,
-            );
-          },
-        }),
-      ],
-      placement: getPlacement(trigger),
-      strategy: "fixed",
-    })
-      .then(({ x, y }) => {
-        if (activeTrigger !== trigger || request !== positionRequest) {
-          return;
-        }
-        const scale = window.devicePixelRatio || 1;
-        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
-        floating.style.visibility = "visible";
-      })
-      .catch(() => {
-        if (activeTrigger === trigger && request === positionRequest) {
-          closeTooltip(false);
-        }
-      });
-  };
-  const openTooltip = (trigger) => {
-    const content = getContent(trigger);
-    if (!trigger.isConnected || content.length === 0) {
-      return;
-    }
-    clearOpenTimeout();
-    if (activeTrigger === trigger) {
-      return;
-    }
-    closeTooltip();
-    const floating = getTooltip();
-    floating.textContent = content;
-    floating.style.visibility = "hidden";
-    floating.style.transform = "translate(0, 0)";
-    document.body.appendChild(floating);
-    activeTrigger = trigger;
-    setDescribedBy(trigger, true);
-    autoUpdateCleanup = autoUpdate(trigger, floating, () => {
-      updatePosition(trigger, floating);
-    });
-  };
-  const requestOpen = (trigger, immediate = false) => {
-    if (
-      getContent(trigger).length === 0 ||
-      activeTrigger === trigger ||
-      pendingTrigger === trigger
-    ) {
-      return;
-    }
-    clearOpenTimeout();
-    pendingTrigger = trigger;
-    const delay =
-      immediate || activeTrigger != null || Date.now() < skipDelayUntil
-        ? 0
-        : hoverDelay;
-    if (delay === 0) {
-      openTooltip(trigger);
-      return;
-    }
-    openTimeout = window.setTimeout(() => {
-      openTimeout = null;
-      pendingTrigger = null;
-      openTooltip(trigger);
-    }, delay);
-  };
-  const handlePointerOpen = (event) => {
-    if (event.pointerType === "touch") {
-      return;
-    }
-    const trigger = getTrigger(event.target);
-    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
-      return;
-    }
-    requestOpen(trigger);
-  };
-  const handleLeave = (event) => {
-    const trigger = getTrigger(event.target);
-    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
-      return;
-    }
-    if (activeTrigger === trigger || pendingTrigger === trigger) {
-      closeTooltip();
-    }
-  };
-  const handleFocusIn = (event) => {
-    const trigger = getTrigger(event.target);
-    if (trigger?.matches(":focus-visible")) {
-      requestOpen(trigger, true);
-    }
-  };
-  const handleKeyDown = (event) => {
-    if (event.key === "Escape") {
-      closeTooltip();
-    }
-  };
-  const handleContextMenu = (event) => {
-    const trigger = getTrigger(event.target);
-    if (activeTrigger === trigger || pendingTrigger === trigger) {
-      closeTooltip();
-    }
-  };
-  const destroy = () => {
-    closeTooltip(false);
-    document.removeEventListener("pointerover", handlePointerOpen);
-    document.removeEventListener("pointerout", handleLeave);
-    document.removeEventListener("focusin", handleFocusIn);
-    document.removeEventListener("focusout", handleLeave);
-    document.removeEventListener("keydown", handleKeyDown);
-    document.removeEventListener("contextmenu", handleContextMenu);
-    tooltip = null;
-  };
-
-  document.addEventListener("pointerover", handlePointerOpen);
-  document.addEventListener("pointerout", handleLeave);
-  document.addEventListener("focusin", handleFocusIn);
-  document.addEventListener("focusout", handleLeave);
-  document.addEventListener("keydown", handleKeyDown);
-  document.addEventListener("contextmenu", handleContextMenu);
-  window.addEventListener("pagehide", destroy, { once: true });
-})();
-</script>
-<script id="codex-visualization-lucide-initialization">(() => {
-  const initialize = () => {
-    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
-  };
-  if (globalThis.lucide != null) {
-    initialize();
-    return;
-  }
-  document
-    .getElementById("codex-visualization-lucide")
-    ?.addEventListener("load", initialize, { once: true });
-})();
-</script>
 </body>
 </html>
