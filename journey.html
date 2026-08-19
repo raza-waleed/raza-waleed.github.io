@@ -848,6 +848,31 @@ svg {
       stroke: var(--border);
       stroke-width: 0.55;
     }
+    #career-flight-path .cfp-globe {
+      display: block;
+      width: 100%;
+      min-height: 390px;
+      touch-action: none;
+      cursor: grab;
+    }
+    #career-flight-path .cfp-globe:active { cursor: grabbing; }
+    #career-flight-path .cfp-globe-tooltip {
+      position: absolute;
+      z-index: 2;
+      transform: translate(-50%, -140%);
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--foreground);
+      background: color-mix(in srgb, var(--background) 88%, transparent);
+      font-weight: 500;
+      white-space: nowrap;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+    }
+    #career-flight-path .cfp-globe-hint {
+      margin-top: 0.6rem;
+    }
     #career-flight-path .cfp-route {
       fill: none;
       stroke: var(--viz-series-1);
@@ -1052,11 +1077,13 @@ svg {
       <g data-layer="planes"></g>
       <g data-layer="points"></g>
     </svg>
+    <canvas class="cfp-globe" role="img" aria-label="An interactive 3D globe showing the career journey route between Pano Aqil, Karachi, Harbin, and Daytona Beach, with training-assignment detours to Mangla and Lahore" hidden></canvas>
     <button class="cfp-marker" type="button" data-id="pano" aria-pressed="true">Pano Aqil</button>
     <button class="cfp-marker" type="button" data-id="karachi" aria-pressed="false">Karachi<span class="cfp-airport-code">KHI</span></button>
     <button class="cfp-marker" type="button" data-id="harbin" aria-pressed="false">Harbin<span class="cfp-airport-code">HRB</span></button>
     <button class="cfp-marker" type="button" data-id="daytona" aria-pressed="false">Daytona Beach<span class="cfp-airport-code">DAB</span></button>
   </div>
+  <p class="cfp-globe-hint text-small text-muted" hidden>Drag to rotate · Click a city marker</p>
 
   <div class="cfp-legend text-small" role="group" aria-label="Route legend">
     <span>Primary academic and professional route</span>
@@ -1098,12 +1125,13 @@ svg {
 
     const root = document.getElementById("career-flight-path");
     const svg = root.querySelector(".cfp-map");
+    const canvas = root.querySelector(".cfp-globe");
+    const globeHint = root.querySelector(".cfp-globe-hint");
     const ns = "http://www.w3.org/2000/svg";
     const width = 1100;
     const height = 520;
-    const projection = geoNaturalEarth1().fitExtent([[18, 24], [width - 18, height - 24]], { type: "Sphere" });
-    const path = geoPath(projection);
-    const projectedPoints = new Map();
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let projectedPoints = new Map();
     const stops = [
       {
         id: "pano",
@@ -1166,7 +1194,7 @@ svg {
     ];
     const primaryRouteIds = ["pano", "karachi", "harbin", "daytona"];
     const assignmentRouteIds = [["karachi", "mangla"], ["karachi", "lahore"]];
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const stopById = new Map(stops.map((stop) => [stop.id, stop]));
 
     function haversineKm(a, b) {
       const R = 6371;
@@ -1179,14 +1207,6 @@ svg {
       const sinLon = Math.sin(dLon / 2);
       const h = sinLat * sinLat + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * sinLon * sinLon;
       return 2 * R * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
-    }
-
-    function appendPath(layer, datum, className) {
-      const el = document.createElementNS(ns, "path");
-      el.setAttribute("d", path(datum));
-      el.setAttribute("class", className);
-      layer.appendChild(el);
-      return el;
     }
 
     function geodesic(a, b) {
@@ -1225,57 +1245,32 @@ svg {
       root.querySelector('[data-layer="planes"]').appendChild(plane);
     }
 
-    function renderMap() {
-      const countries = feature(world, world.objects.features).features;
-      appendPath(root.querySelector('[data-layer="graticule"]'), geoGraticule10(), "cfp-graticule");
-      countries.forEach((country) => appendPath(root.querySelector('[data-layer="land"]'), country, "cfp-land"));
-
-      const stopById = new Map(stops.map((stop) => [stop.id, stop]));
-      let totalPrimaryKm = 0;
-      for (let index = 0; index < primaryRouteIds.length - 1; index += 1) {
-        const from = stopById.get(primaryRouteIds[index]);
-        const to = stopById.get(primaryRouteIds[index + 1]);
-        const legKm = haversineKm(from.coordinates, to.coordinates);
-        to.distanceFromPrev = legKm;
-        totalPrimaryKm += legKm;
-        const segment = geodesic(from.coordinates, to.coordinates);
-        appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-shadow");
-        const routePath = appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route");
-        const segId = "cfp-route-seg-" + index;
-        routePath.setAttribute("id", segId);
-        if (!reducedMotion) addPlane(segId, 7 + index * 1.5);
-      }
-      assignmentRouteIds.forEach(([fromId, toId]) => {
-        const from = stopById.get(fromId);
-        const to = stopById.get(toId);
-        to.distanceFromPrev = haversineKm(from.coordinates, to.coordinates);
-        const segment = geodesic(from.coordinates, to.coordinates);
-        appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-assignment");
-      });
-
-      const totalEl = root.querySelector("[data-total-distance]");
-      if (totalEl) {
-        const pctEarth = (totalPrimaryKm / 40075) * 100;
-        totalEl.textContent = Math.round(totalPrimaryKm).toLocaleString() + " km";
-        root.querySelector("[data-total-distance-note]").textContent = "≈ " + pctEarth.toFixed(0) + "% of Earth's circumference";
-      }
-
-      stops.forEach((stop) => {
-        const point = projection(stop.coordinates);
-        projectedPoints.set(stop.id, point);
-        const circle = document.createElementNS(ns, "circle");
-        circle.setAttribute("cx", point[0]);
-        circle.setAttribute("cy", point[1]);
-        circle.setAttribute("r", stop.type === "assignment" ? "5" : stop.id === "pano" ? "8" : "7");
-        circle.setAttribute("class", "cfp-point" + (stop.type === "assignment" ? " cfp-point-assignment" : "") + (stop.id === "pano" ? " is-active" : ""));
-        circle.setAttribute("data-id", stop.id);
-        root.querySelector('[data-layer="points"]').appendChild(circle);
-      });
-      positionMarkers();
+    // Distance math runs once regardless of which renderer draws the route,
+    // since the stats card and detail panel need it either way.
+    let totalPrimaryKm = 0;
+    for (let index = 0; index < primaryRouteIds.length - 1; index += 1) {
+      const from = stopById.get(primaryRouteIds[index]);
+      const to = stopById.get(primaryRouteIds[index + 1]);
+      const legKm = haversineKm(from.coordinates, to.coordinates);
+      to.distanceFromPrev = legKm;
+      totalPrimaryKm += legKm;
+    }
+    assignmentRouteIds.forEach(([fromId, toId]) => {
+      const from = stopById.get(fromId);
+      const to = stopById.get(toId);
+      to.distanceFromPrev = haversineKm(from.coordinates, to.coordinates);
+    });
+    const totalEl = root.querySelector("[data-total-distance]");
+    if (totalEl) {
+      const pctEarth = (totalPrimaryKm / 40075) * 100;
+      totalEl.textContent = Math.round(totalPrimaryKm).toLocaleString() + " km";
+      root.querySelector("[data-total-distance-note]").textContent = "≈ " + pctEarth.toFixed(0) + "% of Earth's circumference";
     }
 
+    let highlightFn = () => {};
+
     function selectStop(id) {
-      const stop = stops.find((item) => item.id === id);
+      const stop = stopById.get(id);
       if (!stop) return;
       root.querySelector("[data-detail-title]").textContent = stop.title;
       root.querySelector("[data-detail-date]").textContent = stop.date;
@@ -1292,25 +1287,350 @@ svg {
         if (item.matches("button")) item.setAttribute("aria-pressed", item.dataset.id === id ? "true" : "false");
         if (item.matches("circle")) item.classList.toggle("is-active", item.dataset.id === id);
       });
+      highlightFn(id);
     }
 
     root.querySelectorAll("button[data-id]").forEach((button) => {
       button.addEventListener("click", () => selectStop(button.dataset.id));
     });
 
-    try {
-      renderMap();
+    function render2DMap() {
+      // .hidden alone isn't enough here: this page's shared widget CSS sets
+      // `svg { display: block }` as an author rule, which beats the UA
+      // stylesheet's `[hidden] { display: none }` regardless of specificity.
+      canvas.style.display = "none";
+      svg.style.display = "";
+      globeHint.hidden = true;
+      const projection = geoNaturalEarth1().fitExtent([[18, 24], [width - 18, height - 24]], { type: "Sphere" });
+      const path = geoPath(projection);
+      root.querySelector(".cfp-map").__cfpPath = path;
+
+      const countries = feature(world, world.objects.features).features;
+      appendPath(root.querySelector('[data-layer="graticule"]'), geoGraticule10(), "cfp-graticule", path);
+      countries.forEach((country) => appendPath(root.querySelector('[data-layer="land"]'), country, "cfp-land", path));
+
+      for (let index = 0; index < primaryRouteIds.length - 1; index += 1) {
+        const from = stopById.get(primaryRouteIds[index]);
+        const to = stopById.get(primaryRouteIds[index + 1]);
+        const segment = geodesic(from.coordinates, to.coordinates);
+        appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-shadow", path);
+        const routePath = appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route", path);
+        const segId = "cfp-route-seg-" + index;
+        routePath.setAttribute("id", segId);
+        if (!reducedMotion) addPlane(segId, 7 + index * 1.5);
+      }
+      assignmentRouteIds.forEach(([fromId, toId]) => {
+        const from = stopById.get(fromId);
+        const to = stopById.get(toId);
+        const segment = geodesic(from.coordinates, to.coordinates);
+        appendPath(root.querySelector('[data-layer="routes"]'), segment, "cfp-route-assignment", path);
+      });
+
+      stops.forEach((stop) => {
+        const point = projection(stop.coordinates);
+        projectedPoints.set(stop.id, point);
+        const circle = document.createElementNS(ns, "circle");
+        circle.setAttribute("cx", point[0]);
+        circle.setAttribute("cy", point[1]);
+        circle.setAttribute("r", stop.type === "assignment" ? "5" : stop.id === "pano" ? "8" : "7");
+        circle.setAttribute("class", "cfp-point" + (stop.type === "assignment" ? " cfp-point-assignment" : "") + (stop.id === "pano" ? " is-active" : ""));
+        circle.setAttribute("data-id", stop.id);
+        root.querySelector('[data-layer="points"]').appendChild(circle);
+      });
+      positionMarkers();
+
+      highlightFn = (id) => {
+        root.querySelectorAll('[data-layer="points"] circle').forEach((circle) => {
+          circle.classList.toggle("is-active", circle.dataset.id === id);
+        });
+      };
+
       if (typeof ResizeObserver !== "undefined") {
         new ResizeObserver(positionMarkers).observe(svg);
       } else {
         window.addEventListener("resize", positionMarkers);
       }
-    } catch (error) {
-      const message = document.createElement("p");
-      message.className = "cfp-error";
-      message.textContent = "The geographic basemap could not be loaded. The career timeline remains available below.";
-      root.querySelector(".cfp-map-wrap").prepend(message);
     }
+
+    function appendPath(layer, datum, className, path) {
+      const el = document.createElementNS(ns, "path");
+      el.setAttribute("d", path(datum));
+      el.setAttribute("class", className);
+      layer.appendChild(el);
+      return el;
+    }
+
+    // 3D globe: same route data, rendered as a rotatable WebGL sphere. Loaded
+    // only when WebGL is confirmed available, so non-WebGL browsers never
+    // pay for Three.js at all.
+    async function render3DGlobe() {
+      const [THREE, controlsModule] = await Promise.all([
+        import("https://esm.sh/three@0.160.0"),
+        import("https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js")
+      ]);
+      const { OrbitControls } = controlsModule;
+
+      svg.style.display = "none";
+      canvas.style.display = "block";
+      globeHint.hidden = false;
+      root.querySelectorAll(".cfp-marker").forEach((marker) => { marker.hidden = true; });
+
+      const wrap = root.querySelector(".cfp-map-wrap");
+      const R = 2;
+
+      function toVec3(lon, lat, radius) {
+        const phi = (90 - lat) * (Math.PI / 180);
+        const theta = (lon + 180) * (Math.PI / 180);
+        return new THREE.Vector3(
+          -radius * Math.sin(phi) * Math.cos(theta),
+          radius * Math.cos(phi),
+          radius * Math.sin(phi) * Math.sin(theta)
+        );
+      }
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+      camera.position.set(0, 0.45, 5.4);
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+      const globe = new THREE.Group();
+      globe.rotation.y = THREE.MathUtils.degToRad(-35);
+      scene.add(globe);
+
+      const occluder = new THREE.Mesh(
+        new THREE.SphereGeometry(R * 0.99, 48, 48),
+        new THREE.MeshBasicMaterial({ color: 0x030a10 })
+      );
+      globe.add(occluder);
+
+      const atmosphere = new THREE.Mesh(
+        new THREE.SphereGeometry(R * 1.035, 48, 48),
+        new THREE.MeshBasicMaterial({ color: 0x68e8ff, transparent: true, opacity: 0.045, side: THREE.BackSide })
+      );
+      globe.add(atmosphere);
+
+      const countries = feature(world, world.objects.features).features;
+      const linePositions = [];
+      countries.forEach((country) => {
+        const polys = country.geometry.type === "Polygon" ? [country.geometry.coordinates] : country.geometry.coordinates;
+        polys.forEach((poly) => {
+          poly.forEach((ring) => {
+            for (let i = 0; i < ring.length - 1; i += 1) {
+              const a = toVec3(ring[i][0], ring[i][1], R);
+              const b = toVec3(ring[i + 1][0], ring[i + 1][1], R);
+              linePositions.push(a.x, a.y, a.z, b.x, b.y, b.z);
+            }
+          });
+        });
+      });
+      const landGeo = new THREE.BufferGeometry();
+      landGeo.setAttribute("position", new THREE.Float32BufferAttribute(linePositions, 3));
+      globe.add(new THREE.LineSegments(landGeo, new THREE.LineBasicMaterial({ color: 0x4a7386, transparent: true, opacity: 0.6 })));
+
+      const gratPositions = [];
+      for (let lat = -60; lat <= 60; lat += 30) {
+        for (let lon = -180; lon < 180; lon += 4) {
+          const a = toVec3(lon, lat, R);
+          const b = toVec3(lon + 4, lat, R);
+          gratPositions.push(a.x, a.y, a.z, b.x, b.y, b.z);
+        }
+      }
+      for (let lon = -150; lon <= 180; lon += 30) {
+        for (let lat = -80; lat < 80; lat += 4) {
+          const a = toVec3(lon, lat, R);
+          const b = toVec3(lon, lat + 4, R);
+          gratPositions.push(a.x, a.y, a.z, b.x, b.y, b.z);
+        }
+      }
+      const gratGeo = new THREE.BufferGeometry();
+      gratGeo.setAttribute("position", new THREE.Float32BufferAttribute(gratPositions, 3));
+      globe.add(new THREE.LineSegments(gratGeo, new THREE.LineBasicMaterial({ color: 0x2a4552, transparent: true, opacity: 0.35 })));
+
+      function buildArcCurve(from, to, elevated) {
+        const segments = 64;
+        const interpolate = geoInterpolate(from, to);
+        const maxLift = elevated ? 0.34 : 0.14;
+        const points = [];
+        for (let i = 0; i <= segments; i += 1) {
+          const t = i / segments;
+          const [lon, lat] = interpolate(t);
+          const lift = Math.sin(Math.PI * t) * maxLift;
+          points.push(toVec3(lon, lat, R + lift));
+        }
+        return new THREE.CatmullRomCurve3(points);
+      }
+
+      const primaryCurves = [];
+      for (let index = 0; index < primaryRouteIds.length - 1; index += 1) {
+        const from = stopById.get(primaryRouteIds[index]);
+        const to = stopById.get(primaryRouteIds[index + 1]);
+        const curve = buildArcCurve(from.coordinates, to.coordinates, true);
+        const tubeGeo = new THREE.TubeGeometry(curve, 64, 0.006, 6, false);
+        const tubeMat = new THREE.MeshBasicMaterial({ color: 0x68e8ff, transparent: true, opacity: 0.85 });
+        globe.add(new THREE.Mesh(tubeGeo, tubeMat));
+        primaryCurves.push(curve);
+      }
+      assignmentRouteIds.forEach(([fromId, toId]) => {
+        const from = stopById.get(fromId);
+        const to = stopById.get(toId);
+        const curve = buildArcCurve(from.coordinates, to.coordinates, false);
+        const dashGeo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(48));
+        const dashMat = new THREE.LineDashedMaterial({ color: 0xffb35c, dashSize: 0.05, gapSize: 0.035, transparent: true, opacity: 0.8 });
+        const dashLine = new THREE.Line(dashGeo, dashMat);
+        dashLine.computeLineDistances();
+        globe.add(dashLine);
+      });
+
+      const pulses = primaryCurves.map((curve, index) => {
+        const mesh = new THREE.Mesh(
+          new THREE.SphereGeometry(0.02, 12, 12),
+          new THREE.MeshBasicMaterial({ color: 0xb8ff68 })
+        );
+        globe.add(mesh);
+        return { curve, mesh, offset: index / Math.max(primaryCurves.length, 1) };
+      });
+
+      const cityMeshes = new Map();
+      stops.forEach((stop) => {
+        const isAssignment = stop.type === "assignment";
+        const mesh = new THREE.Mesh(
+          new THREE.SphereGeometry(isAssignment ? 0.028 : 0.038, 16, 16),
+          new THREE.MeshBasicMaterial({ color: isAssignment ? 0xffb35c : 0x68e8ff })
+        );
+        mesh.position.copy(toVec3(stop.coordinates[0], stop.coordinates[1], R));
+        mesh.userData.stopId = stop.id;
+        mesh.userData.baseColor = mesh.material.color.getHex();
+        globe.add(mesh);
+        cityMeshes.set(stop.id, mesh);
+      });
+      const cityMeshList = Array.from(cityMeshes.values());
+
+      highlightFn = (id) => {
+        cityMeshes.forEach((mesh, meshId) => {
+          const active = meshId === id;
+          mesh.scale.setScalar(active ? 1.7 : 1);
+          mesh.material.color.set(active ? 0xb8ff68 : mesh.userData.baseColor);
+        });
+      };
+      highlightFn("pano");
+
+      const controls = new OrbitControls(camera, canvas);
+      controls.target.set(0, 0, 0);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
+      controls.enablePan = false;
+      controls.minDistance = 3.2;
+      controls.maxDistance = 8;
+      controls.rotateSpeed = 0.55;
+      let dragging = false;
+      controls.addEventListener("start", () => { dragging = true; });
+      controls.addEventListener("end", () => { dragging = false; });
+
+      const tooltip = document.createElement("div");
+      tooltip.className = "cfp-globe-tooltip";
+      tooltip.hidden = true;
+      wrap.appendChild(tooltip);
+
+      const raycaster = new THREE.Raycaster();
+      const pointer = new THREE.Vector2();
+      function frontFacingCityHit(clientX, clientY) {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+        pointer.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+        raycaster.setFromCamera(pointer, camera);
+        const hits = raycaster.intersectObjects([occluder, ...cityMeshList]);
+        if (hits.length && hits[0].object !== occluder) return hits[0].object;
+        return null;
+      }
+
+      canvas.addEventListener("pointermove", (evt) => {
+        const hit = frontFacingCityHit(evt.clientX, evt.clientY);
+        if (hit) {
+          const stop = stopById.get(hit.userData.stopId);
+          const wrapRect = wrap.getBoundingClientRect();
+          tooltip.textContent = stop.city;
+          tooltip.style.left = (evt.clientX - wrapRect.left) + "px";
+          tooltip.style.top = (evt.clientY - wrapRect.top) + "px";
+          tooltip.hidden = false;
+          canvas.style.cursor = "pointer";
+        } else {
+          tooltip.hidden = true;
+          canvas.style.cursor = dragging ? "grabbing" : "grab";
+        }
+      });
+      canvas.addEventListener("pointerleave", () => { tooltip.hidden = true; });
+      canvas.addEventListener("click", (evt) => {
+        const hit = frontFacingCityHit(evt.clientX, evt.clientY);
+        if (hit) selectStop(hit.userData.stopId);
+      });
+
+      function resize() {
+        const rect = wrap.getBoundingClientRect();
+        const h = Math.max(rect.height, 390);
+        renderer.setSize(rect.width, h, true);
+        camera.aspect = rect.width / h;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      if (typeof ResizeObserver !== "undefined") {
+        new ResizeObserver(resize).observe(wrap);
+      } else {
+        window.addEventListener("resize", resize);
+      }
+
+      let isVisible = true;
+      if (typeof IntersectionObserver !== "undefined") {
+        new IntersectionObserver((entries) => { isVisible = entries[0].isIntersecting; }, { threshold: 0.01 }).observe(canvas);
+      }
+
+      let lastT = null;
+      function animate(t) {
+        requestAnimationFrame(animate);
+        if (lastT === null) lastT = t;
+        const dt = Math.min((t - lastT) / 1000, 0.05);
+        lastT = t;
+        if (!isVisible) return;
+        if (!reducedMotion && !dragging) globe.rotation.y += dt * 0.09;
+        pulses.forEach((pulse) => {
+          if (!reducedMotion) pulse.offset = (pulse.offset + dt * 0.09) % 1;
+          pulse.mesh.position.copy(pulse.curve.getPointAt(pulse.offset));
+        });
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    const supportsWebGL = (() => {
+      try {
+        const test = document.createElement("canvas");
+        return !!(window.WebGLRenderingContext && (test.getContext("webgl2") || test.getContext("webgl")));
+      } catch (error) {
+        return false;
+      }
+    })();
+
+    (async () => {
+      try {
+        if (supportsWebGL) {
+          await render3DGlobe();
+        } else {
+          render2DMap();
+        }
+      } catch (error) {
+        console.error("3D globe failed, falling back to the flat map:", error);
+        try {
+          render2DMap();
+        } catch (fallbackError) {
+          const message = document.createElement("p");
+          message.className = "cfp-error";
+          message.textContent = "The geographic basemap could not be loaded. The career timeline remains available below.";
+          root.querySelector(".cfp-map-wrap").prepend(message);
+        }
+      }
+    })();
   </script>
 </div>
 
