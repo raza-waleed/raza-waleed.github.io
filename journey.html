@@ -1301,6 +1301,7 @@ svg {
       canvas.style.display = "none";
       svg.style.display = "";
       globeHint.hidden = true;
+      root.querySelectorAll(".cfp-marker").forEach((marker) => { marker.style.display = ""; });
       const projection = geoNaturalEarth1().fitExtent([[18, 24], [width - 18, height - 24]], { type: "Sphere" });
       const path = geoPath(projection);
       root.querySelector(".cfp-map").__cfpPath = path;
@@ -1373,7 +1374,7 @@ svg {
       svg.style.display = "none";
       canvas.style.display = "block";
       globeHint.hidden = false;
-      root.querySelectorAll(".cfp-marker").forEach((marker) => { marker.hidden = true; });
+      root.querySelectorAll(".cfp-marker").forEach((marker) => { marker.style.display = "none"; });
 
       const wrap = root.querySelector(".cfp-map-wrap");
       const R = 2;
