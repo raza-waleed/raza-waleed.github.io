@@ -169,7 +169,12 @@ a:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
 .signal-grid span:last-child { padding-right: 0; border-right: 0; }
 
 .section { padding: 108px 0; border-bottom: 1px solid var(--line); }
-.section-alt { background: rgba(12, 29, 41, 0.52); }
+.section-alt {
+  background:
+    radial-gradient(circle at 88% 0%, rgba(104, 232, 255, 0.08), transparent 32rem),
+    linear-gradient(175deg, var(--panel-2) 0%, var(--panel) 60%, var(--bg-deep) 100%);
+  border-bottom: 1px solid var(--line-strong);
+}
 .section-heading { display: grid; grid-template-columns: 1.15fr 0.65fr; gap: 90px; align-items: end; margin-bottom: 54px; }
 .section-heading h2, .philosophy-grid h2, .research-grid h2, .contact-grid h2 {
   margin: 16px 0 0;
