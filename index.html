@@ -240,18 +240,105 @@
               <span class="case-type">Dissertation method stack</span>
               <span>4 analytical methods</span>
             </div>
-            <div class="case-grid">
-              <div class="case-copy">
-                <h3>Four Methods for Noise-Aware Route Optimization</h3>
-                <p>The dissertation evaluates route geometry, altitude, competing operational objectives, and schedule effects as connected parts of one planning framework rather than isolated analyses.</p>
-                <p class="case-result">Together, the methods expose where acoustic benefit comes from, what operational penalty it introduces, and how route-level improvements change under efficiency, noise, sensitive-receptor, and time-of-day priorities.</p>
-                <a class="text-link" href="https://commons.erau.edu/edt/1007/" target="_blank" rel="noopener">Review the dissertation record <span aria-hidden="true">↗</span></a>
+            <div class="case-copy">
+              <h3>Four Methods for Noise-Aware Route Optimization</h3>
+              <p>The dissertation evaluates route geometry, altitude, competing operational objectives, and schedule effects as connected parts of one planning framework rather than isolated analyses.</p>
+              <p class="case-result">Together, the methods expose where acoustic benefit comes from, what operational penalty it introduces, and how route-level improvements change under efficiency, noise, sensitive-receptor, and time-of-day priorities.</p>
+              <a class="text-link" href="https://commons.erau.edu/edt/1007/" target="_blank" rel="noopener">Review the dissertation record <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="method-scroller" data-method-scroller>
+              <div class="method-steps" role="group" aria-label="Four dissertation optimization methods">
+                <div class="method-step is-active" data-method-step="1">
+                  <span class="ms-num">01</span>
+                  <h4>Horizontal optimization</h4>
+                  <p>Shifts conflict-prone corridors away from sensitive receptors while preserving origin-destination structure.</p>
+                </div>
+                <div class="method-step" data-method-step="2">
+                  <span class="ms-num">02</span>
+                  <h4>Vertical optimization</h4>
+                  <p>Raises interior flight profiles to increase source-receiver separation and quantifies the associated mission-energy penalty.</p>
+                </div>
+                <div class="method-step" data-method-step="3">
+                  <span class="ms-num">03</span>
+                  <h4>Multi-objective selection</h4>
+                  <p>Compares baseline, horizontal, altitude, and integrated candidates across four operational priority profiles.</p>
+                </div>
+                <div class="method-step" data-method-step="4">
+                  <span class="ms-num">04</span>
+                  <h4>Time-of-day analysis</h4>
+                  <p>Separates route-geometry effects on single events from schedule and night-weighting effects on cumulative DNL.</p>
+                </div>
               </div>
-              <div class="case-metrics method-metrics" role="group" aria-label="Four dissertation optimization methods">
-                <div><strong>01</strong><span><b>Horizontal optimization</b>Shifts conflict-prone corridors away from sensitive receptors while preserving origin-destination structure.</span></div>
-                <div><strong>02</strong><span><b>Vertical optimization</b>Raises interior flight profiles to increase source-receiver separation and quantifies the associated mission-energy penalty.</span></div>
-                <div><strong>03</strong><span><b>Multi-objective selection</b>Compares baseline, horizontal, altitude, and integrated candidates across four operational priority profiles.</span></div>
-                <div><strong>04</strong><span><b>Time-of-day analysis</b>Separates route-geometry effects on single events from schedule and night-weighting effects on cumulative DNL.</span></div>
+
+              <div class="method-visual-wrap">
+                <div class="method-visual route-console" aria-hidden="true">
+                  <div class="console-head">
+                    <span>METHOD <span data-method-current>01</span> / 04</span>
+                    <span class="mv-dots">
+                      <span class="mv-dot is-active" data-step-dot="1"></span>
+                      <span class="mv-dot" data-step-dot="2"></span>
+                      <span class="mv-dot" data-step-dot="3"></span>
+                      <span class="mv-dot" data-step-dot="4"></span>
+                    </span>
+                  </div>
+                  <svg class="mv-svg" viewBox="0 0 460 240">
+                    <g class="mv-grid">
+                      <path d="M0 60H460M0 120H460M0 180H460"></path>
+                      <path d="M76 0V240M152 0V240M228 0V240M304 0V240M380 0V240"></path>
+                    </g>
+
+                    <g class="mv-stage is-active" data-stage="1">
+                      <circle class="mv-receptor" cx="240" cy="120" r="46"></circle>
+                      <path class="mv-baseline" d="M50 170 C140 150 200 110 260 108 S380 90 410 55"></path>
+                      <path class="mv-optimized" d="M50 170 C120 195 200 190 270 150 S370 95 410 55"></path>
+                      <circle class="mv-node" cx="50" cy="170" r="5"></circle>
+                      <circle class="mv-node" cx="410" cy="55" r="5"></circle>
+                      <text class="mv-label" x="196" y="115">RECEPTOR</text>
+                    </g>
+
+                    <g class="mv-stage" data-stage="2">
+                      <line class="mv-ground" x1="30" y1="190" x2="430" y2="190"></line>
+                      <path class="mv-baseline" d="M50 175 C150 172 280 172 410 175"></path>
+                      <path class="mv-optimized" d="M50 175 C160 175 190 70 230 68 S300 175 410 175"></path>
+                      <circle class="mv-node" cx="50" cy="175" r="5"></circle>
+                      <circle class="mv-node" cx="410" cy="175" r="5"></circle>
+                      <line class="mv-altaxis" x1="230" y1="68" x2="230" y2="175"></line>
+                      <text class="mv-label mv-label-accent" x="240" y="90">+ALT</text>
+                      <text class="mv-label" x="310" y="208">MISSION-ENERGY &#916;</text>
+                    </g>
+
+                    <g class="mv-stage" data-stage="3">
+                      <circle class="mv-receptor" cx="240" cy="120" r="46"></circle>
+                      <path class="mv-baseline" d="M50 170 C140 150 200 110 260 108 S380 90 410 55"></path>
+                      <path class="mv-alt-h" d="M50 170 C120 195 200 190 270 150 S370 95 410 55"></path>
+                      <path class="mv-alt-v" d="M50 170 C160 170 190 70 260 65 S380 70 410 55"></path>
+                      <path class="mv-integrated" d="M50 170 C130 205 220 175 290 120 S380 75 410 55"></path>
+                      <circle class="mv-node" cx="50" cy="170" r="5"></circle>
+                      <circle class="mv-node" cx="410" cy="55" r="5"></circle>
+                    </g>
+
+                    <g class="mv-stage" data-stage="4">
+                      <line class="mv-ground" x1="40" y1="130" x2="420" y2="130"></line>
+                      <rect class="mv-night" x="40" y="118" width="90" height="24"></rect>
+                      <rect class="mv-night" x="350" y="118" width="70" height="24"></rect>
+                      <line class="mv-tick" x1="40" y1="124" x2="40" y2="136"></line>
+                      <line class="mv-tick" x1="135" y1="124" x2="135" y2="136"></line>
+                      <line class="mv-tick" x1="230" y1="124" x2="230" y2="136"></line>
+                      <line class="mv-tick" x1="325" y1="124" x2="325" y2="136"></line>
+                      <line class="mv-tick" x1="420" y1="124" x2="420" y2="136"></line>
+                      <text class="mv-label" x="30" y="155">00:00</text>
+                      <text class="mv-label" x="212" y="155">12:00</text>
+                      <text class="mv-label" x="388" y="155">24:00</text>
+                      <circle class="mv-event" cx="80" cy="130" r="4"></circle>
+                      <circle class="mv-event" cx="200" cy="130" r="4"></circle>
+                      <circle class="mv-event" cx="260" cy="130" r="4"></circle>
+                      <circle class="mv-event mv-event-night" cx="380" cy="130" r="4"></circle>
+                      <text class="mv-label mv-label-accent" x="345" y="106">NIGHT WEIGHTING</text>
+                    </g>
+                  </svg>
+                  <p class="mv-name" data-method-name>Horizontal optimization</p>
+                </div>
               </div>
             </div>
           </article>
@@ -324,6 +411,7 @@
   </footer>
 
   <script src="reveal.js"></script>
+  <script src="method-scroller.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

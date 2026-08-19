@@ -230,9 +230,44 @@ a:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
 .case-metrics strong { color: var(--ink-strong); font-family: "SFMono-Regular", Consolas, monospace; font-size: 1.6rem; }
 .case-metrics span { margin-top: 6px; color: var(--muted); font-size: 0.72rem; line-height: 1.35; text-transform: uppercase; }
 .methods-case .case-type, .methods-case .text-link { color: var(--lime); }
-.method-metrics div { min-height: 190px; justify-content: flex-start; }
-.method-metrics b { display: block; margin-bottom: 7px; color: var(--ink-strong); font-size: 0.76rem; letter-spacing: 0.01em; text-transform: none; }
-.method-metrics span { line-height: 1.5; text-transform: none; }
+
+/* Method scroller: sticky diagram + scroll-linked steps (no external dependency — position:sticky + IntersectionObserver) */
+.method-scroller { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; padding: 8px 42px 42px; border-top: 1px solid var(--line); }
+.method-steps { display: flex; flex-direction: column; }
+.method-step { padding: 11vh 4px; border-left: 2px solid transparent; }
+.js .method-step { opacity: 0.5; transition: opacity 320ms ease, border-color 320ms ease; }
+.js .method-step.is-active { opacity: 1; }
+.method-step.is-active { border-left-color: var(--cyan); padding-left: 22px; }
+.ms-num { display: block; margin-bottom: 10px; color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.72rem; letter-spacing: 0.1em; }
+.method-step h4 { margin: 0 0 10px; color: var(--ink-strong); font-size: 1.4rem; letter-spacing: -0.02em; }
+.method-step p { margin: 0; max-width: 46ch; color: var(--muted); font-size: 0.94rem; line-height: 1.6; }
+
+.method-visual-wrap { position: relative; }
+.method-visual { position: sticky; top: 92px; }
+.mv-dots { display: flex; gap: 6px; }
+.mv-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line-strong); }
+.mv-dot.is-active { background: var(--cyan); box-shadow: 0 0 0 3px rgba(104, 232, 255, 0.15); }
+[data-method-current] { color: var(--cyan); }
+
+.mv-svg { display: block; width: 100%; height: auto; }
+.mv-grid path { fill: none; stroke: rgba(110, 171, 195, 0.1); stroke-width: 1; }
+.mv-stage { opacity: 0; transition: opacity 420ms ease; }
+.mv-stage.is-active { opacity: 1; }
+.mv-receptor { fill: rgba(255, 179, 92, 0.06); stroke: rgba(255, 179, 92, 0.35); stroke-width: 1; stroke-dasharray: 3 4; }
+.mv-baseline { fill: none; stroke: rgba(255, 179, 92, 0.4); stroke-width: 2; stroke-dasharray: 6 6; }
+.mv-optimized, .mv-integrated { fill: none; stroke: url(#route-gradient); stroke-width: 2.5; filter: drop-shadow(0 0 4px rgba(104, 232, 255, 0.5)); }
+.mv-alt-h, .mv-alt-v { fill: none; stroke: var(--cyan); stroke-width: 1.5; opacity: 0.5; }
+.mv-node { fill: var(--bg-deep); stroke: var(--cyan); stroke-width: 2; }
+.mv-ground { stroke: var(--line-strong); stroke-width: 1; }
+.mv-altaxis { stroke: var(--dim); stroke-width: 1; stroke-dasharray: 2 4; }
+.mv-tick { stroke: var(--line-strong); stroke-width: 1; }
+.mv-night { fill: rgba(255, 179, 92, 0.08); }
+.mv-event { fill: var(--bg-deep); stroke: var(--cyan); stroke-width: 1.5; }
+.mv-event-night { stroke: var(--orange); }
+.mv-label { fill: var(--dim); font-family: "SFMono-Regular", Consolas, monospace; font-size: 8px; letter-spacing: 0.04em; }
+.mv-label-accent { fill: var(--lime); }
+.mv-name { margin: 0; padding: 11px 18px; border-top: 1px solid var(--line); color: var(--muted); font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
 
 .research-grid { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 100px; }
 .research-intro { margin-top: 28px; max-width: 60ch; }
@@ -327,6 +362,10 @@ footer { padding: 28px 0; color: var(--dim); font-family: "SFMono-Regular", Cons
   .case-grid { grid-template-columns: 1fr; }
   .case-metrics { border-top: 1px solid var(--line); border-left: 0; }
   .journey-frame { height: 940px; }
+  .method-scroller { grid-template-columns: 1fr; gap: 24px; padding: 8px 30px 30px; }
+  .method-visual-wrap { order: -1; margin-bottom: 8px; }
+  .method-visual { position: static; }
+  .method-step { padding: 24px 4px; }
 }
 
 @media (max-width: 760px) {
@@ -348,6 +387,8 @@ footer { padding: 28px 0; color: var(--dim); font-family: "SFMono-Regular", Cons
   .expertise-card { padding: 28px 24px; }
   .case-copy { padding: 30px 24px; }
   .case-metrics div { min-height: 128px; padding: 18px; }
+  .method-scroller { padding: 8px 24px 30px; }
+  .method-step { padding: 20px 0; }
   .signal-grid { grid-template-columns: 1fr 1fr; }
   .signal-grid span { padding: 0 8px; border-right: 1px solid var(--line); }
   .signal-grid span:last-child { grid-column: span 2; }
