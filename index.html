@@ -7,6 +7,7 @@
   <title>Ph.D. Electrical Engineering Computer Science</title>
   <meta name="description" content="Waleed Raza is an aviation routing researcher and aerospace systems engineer specializing in multi-criteria flight routing, airspace technology, noise-aware optimization, and scalable aviation data systems.">
   <link rel="stylesheet" href="style.css">
+  <script>if ('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -106,11 +107,11 @@
 
     <section class="signal-strip" aria-label="Technical focus areas">
       <div class="shell signal-grid">
-        <span>Graph-based route search</span>
-        <span>Trajectory optimization</span>
-        <span>CNS/ATM integration</span>
-        <span>Acoustic impact modeling</span>
-        <span>Aviation data engineering</span>
+        <span data-reveal>Graph-based route search</span>
+        <span data-reveal>Trajectory optimization</span>
+        <span data-reveal>CNS/ATM integration</span>
+        <span data-reveal>Acoustic impact modeling</span>
+        <span data-reveal>Aviation data engineering</span>
       </div>
     </section>
 
@@ -125,7 +126,7 @@
         </div>
 
         <div class="expertise-grid">
-          <article class="expertise-card">
+          <article class="expertise-card" data-reveal>
             <div class="card-number">01</div>
             <div class="card-icon" aria-hidden="true">G(V,E)</div>
             <h3>Algorithmic Routing Engine Architecture</h3>
@@ -137,7 +138,7 @@
             </ul>
           </article>
 
-          <article class="expertise-card">
+          <article class="expertise-card" data-reveal>
             <div class="card-number">02</div>
             <div class="card-icon" aria-hidden="true">FPL</div>
             <h3>NextGen / SESAR Alignment &amp; Airspace Technology</h3>
@@ -149,7 +150,7 @@
             </ul>
           </article>
 
-          <article class="expertise-card">
+          <article class="expertise-card" data-reveal>
             <div class="card-number">03</div>
             <div class="card-icon" aria-hidden="true">ADS-B</div>
             <h3>Scalable Aviation Data Systems</h3>
@@ -195,7 +196,7 @@
         <div class="journey-frame-wrap">
           <div class="journey-frame-head">
             <span>CAREER GEOGRAPHY / 6 LOCATIONS / 3 COUNTRIES</span>
-            <a href="journey.html" target="_blank" rel="noopener">Open full view ↗</a>
+            <a href="journey.html" target="_blank" rel="noopener">Open full view <span aria-hidden="true">↗</span></a>
           </div>
           <iframe class="journey-frame" src="journey.html" title="Interactive geospatial career journey from Pano Aqil to Daytona Beach" loading="lazy"></iframe>
         </div>
@@ -213,7 +214,7 @@
         </div>
 
         <div class="portfolio-stack">
-          <article class="case-study">
+          <article class="case-study" data-reveal>
             <div class="case-meta">
               <span class="case-type">Validated doctoral research</span>
               <span>2026</span>
@@ -234,7 +235,7 @@
             </div>
           </article>
 
-          <article class="case-study methods-case">
+          <article class="case-study methods-case" data-reveal>
             <div class="case-meta">
               <span class="case-type">Dissertation method stack</span>
               <span>4 analytical methods</span>
@@ -270,24 +271,24 @@
           </div>
         </div>
         <div class="publication-list">
-          <article>
+          <article data-reveal>
             <span>2026 · IEEE T-ITS</span>
             <h3>Demand Modeling for Advanced Air Mobility: Challenges, Opportunities, and Future Directions</h3>
           </article>
-          <article>
+          <article data-reveal>
             <span>2025 · Drones</span>
             <h3>Noise Prediction and Mitigation for UAS and eVTOL Aircraft: A Survey</h3>
-            <a href="https://doi.org/10.3390/drones9080577" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI ↗</a>
+            <a href="https://doi.org/10.3390/drones9080577" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI <span aria-hidden="true">↗</span></a>
           </article>
-          <article>
+          <article data-reveal>
             <span>2025 · AIAA Journal of Air Transportation</span>
             <h3>Advanced Air Mobility: Innovations, Applications, Challenges, and Future Potential</h3>
-            <a href="https://doi.org/10.2514/1.D0440" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI ↗</a>
+            <a href="https://doi.org/10.2514/1.D0440" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI <span aria-hidden="true">↗</span></a>
           </article>
-          <article>
+          <article data-reveal>
             <span>2023 · IEEE Aerospace and Electronic Systems Magazine</span>
             <h3>Flight Data Recorders: Past, Present, and Future</h3>
-            <a href="https://doi.org/10.1109/MAES.2023.3335333" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI ↗</a>
+            <a href="https://doi.org/10.1109/MAES.2023.3335333" target="_blank" rel="noopener" aria-label="Open publication DOI">DOI <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </div>
@@ -322,6 +323,7 @@
     </div>
   </footer>
 
+  <script src="reveal.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
