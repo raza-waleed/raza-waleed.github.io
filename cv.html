@@ -1,147 +1,105 @@
 <!doctype html>
-  <html lang="en">
-  <head>
+<html lang="en">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07131d">
   <title>Waleed Raza - CV</title>
+  <meta name="description" content="Curriculum vitae of Waleed Raza, Ph.D., covering aviation systems, Advanced Air Mobility, UAS integration, optimization, and underwater acoustics research.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://raza-waleed.github.io/cv.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
-  :root {
-  --text: #1c1c1a;
---muted: #55534c;
---accent: #1e3a5f;
---rule: #d8d4c8;
-  }
-* { box-sizing: border-box; }
-body {
-  max-width: 780px;
-margin: 0 auto;
-padding: 48px 24px 80px;
-font-family: Georgia, "Times New Roman", serif;
-color: var(--text);
-line-height: 1.5;
-font-size: 15px;
-}
-.print-bar {
-  display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 28px;
-font-family: -apple-system, "Segoe UI", Arial, sans-serif;
-}
-.print-bar a { color: var(--accent); font-size: 0.9rem; }
-.print-bar button {
-  font-family: -apple-system, "Segoe UI", Arial, sans-serif;
-background: var(--accent);
-color: #fff;
-border: none;
-border-radius: 4px;
-padding: 8px 16px;
-font-size: 0.9rem;
-cursor: pointer;
-}
-h1 { font-size: 1.7rem; margin: 0 0 2px; }
-.contact { font-family: -apple-system, "Segoe UI", Arial, sans-serif; font-size: 0.88rem; color: var(--muted); margin-bottom: 20px; }
-.contact a { color: var(--muted); }
-h2 {
-  font-size: 1rem;
-text-transform: uppercase;
-letter-spacing: 0.8px;
-border-bottom: 1.5px solid var(--accent);
-  padding-bottom: 4px;
-  margin: 26px 0 10px;
-color: var(--accent);
-}
-h2:first-of-type { margin-top: 0; }
-p { margin: 0 0 10px; }
-.entry { margin-bottom: 12px; }
-  .entry-head { display: flex; justify-content: space-between; gap: 12px; font-weight: bold; }
-.entry-sub { font-style: italic; color: var(--muted); font-size: 0.93rem; }
-.entry-sub a { color: var(--accent); }
-ul { margin: 4px 0 0; padding-left: 18px; }
-  li { margin-bottom: 3px; font-size: 0.94rem; }
-  .pubs li { margin-bottom: 6px; }
-@media print {
-    .print-bar { display: none; }
-body { padding: 0; max-width: none; }
-a { color: inherit; text-decoration: none; }
-  }
+    :root { --text:#1c1c1a; --muted:#55534c; --accent:#075d83; --amber:#b66d00; --rule:#d8d4c8; --paper:#fff; }
+    * { box-sizing:border-box; }
+    body { max-width:860px; margin:0 auto; padding:44px 28px 80px; background:var(--paper); color:var(--text); font-family:Georgia,"Times New Roman",serif; font-size:14.5px; line-height:1.48; }
+    a { color:var(--accent); text-underline-offset:2px; }
+    .print-bar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:28px; font-family:-apple-system,"Segoe UI",Arial,sans-serif; }
+    .print-bar a { font-size:.9rem; }
+    .print-bar button { border:0; border-radius:3px; padding:9px 16px; background:var(--accent); color:#fff; font:inherit; cursor:pointer; }
+    h1 { margin:0 0 3px; font-size:1.9rem; }
+    .headline { margin:0 0 6px; color:var(--accent); font-family:-apple-system,"Segoe UI",Arial,sans-serif; font-size:.96rem; font-weight:650; }
+    .contact { margin-bottom:21px; color:var(--muted); font-family:-apple-system,"Segoe UI",Arial,sans-serif; font-size:.83rem; }
+    h2 { margin:25px 0 10px; padding-bottom:4px; border-bottom:1.5px solid var(--accent); color:var(--accent); font-size:.98rem; letter-spacing:.8px; text-transform:uppercase; }
+    h2:first-of-type { margin-top:0; }
+    h3 { margin:0; font-size:.96rem; }
+    p { margin:0 0 9px; }
+    .entry { margin-bottom:13px; }
+    .entry-head { display:flex; justify-content:space-between; gap:18px; font-weight:bold; }
+    .entry-date { flex:0 0 auto; font-family:-apple-system,"Segoe UI",Arial,sans-serif; font-size:.8rem; font-weight:600; }
+    .entry-sub { color:var(--muted); font-size:.91rem; font-style:italic; }
+    ul { margin:4px 0 0; padding-left:18px; }
+    li { margin-bottom:3px; }
+    .pubs li { margin-bottom:6px; }
+    .award { color:var(--amber); font-weight:bold; }
+    .small { color:var(--muted); font-size:.84rem; }
+    @media (max-width:620px) { body{padding:28px 18px 60px}.entry-head{display:block}.entry-date{display:block;margin-top:2px}.contact{line-height:1.7} }
+    @media print { @page{margin:.55in}.print-bar{display:none}body{max-width:none;padding:0;font-size:10.5pt;line-height:1.35}h2{break-after:avoid;margin-top:16px}.entry,li{break-inside:avoid}a{color:inherit;text-decoration:none} }
   </style>
 </head>
 <body>
   <div class="print-bar">
-  <a href="index.html">Back to site</a>
-  <button onclick="window.print()">Print / Save as PDF</button>
-</div>
+    <a href="index.html">Back to portfolio</a>
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
 
-<h1>Waleed Raza</h1>
-<div class="contact">
-  Daytona Beach, FL &nbsp;|&nbsp; <a href="mailto:razaw@my.erau.edu">razaw@my.erau.edu</a> &nbsp;|&nbsp;
-<a href="mailto:waleedraza93@gmail.com">waleedraza93@gmail.com</a> &nbsp;|&nbsp;
-    <a href="https://linkedin.com/in/waleed-raza-b4690953" target="_blank" rel="noopener">LinkedIn</a> &nbsp;|&nbsp;
-  <a href="https://orcid.org/0000-0002-4142-3195" target="_blank" rel="noopener">ORCID</a>
-</div>
+  <h1>Waleed Raza</h1>
+  <p class="headline">Ph.D., Electrical Engineering &amp; Computer Science</p>
+  <div class="contact">
+    Daytona Beach, FL &nbsp;|&nbsp; <a href="mailto:razaw@my.erau.edu">razaw@my.erau.edu</a> &nbsp;|&nbsp;
+    <a href="mailto:waleedraza93@gmail.com">waleedraza93@gmail.com</a> &nbsp;|&nbsp;
+    <a href="https://linkedin.com/in/waleed-raza-b4690953">LinkedIn</a> &nbsp;|&nbsp;
+    <a href="https://orcid.org/0000-0002-4142-3195">ORCID</a> &nbsp;|&nbsp;
+    <a href="https://scholar.google.com/citations?user=qOyRccEAAAAJ&amp;hl=en">Google Scholar</a>
+  </div>
 
-<h2>Summary</h2>
-<p>
-  Ph.D. in Electrical Engineering and Computer Science focused on UAS integration into the
-    National Airspace System, Advanced Air Mobility, airspace routing and operations, flight-recorder
-requirements, aviation safety, optimization, simulation, and system-level modeling. Strong fit for
-  air traffic management, airspace systems engineering, UAS/AAM operations research, aviation
-  verification and validation, technical standards analysis, and data-driven aerospace systems roles.
-</p>
-<h2>Education</h2>
-<div class="entry">
-<div class="entry-head"><span>Ph.D., Electrical Engineering and Computer Science</span><span>Aug 2022 - Jul 2026</span></div>
-<div class="entry-sub">Embry-Riddle Aeronautical University, Daytona Beach, FL &middot; GPA 4.0</div>
-<div class="entry-sub">Dissertation: <a href="https://commons.erau.edu/edt/1007/" target="_blank" rel="noopener">"Noise-Optimized Routes for Air Taxi"</a> &middot; Committee Chair: Richard S. Stansbury</div>
-</div>
-<div class="entry">
-<div class="entry-head"><span>M.Eng., Underwater Acoustics Engineering</span><span>Sep 2018 - Mar 2021</span></div>
-<div class="entry-sub">Harbin Engineering University, China &middot; GPA 3.86</div>
-    </div>
-  <div class="entry">
-<div class="entry-head"><span>B.Eng., Electronic Engineering</span><span>Jan 2013 - Dec 2016</span></div>
-  <div class="entry-sub">Dawood University of Engineering and Technology, Pakistan</div>
-</div>
+  <h2>Summary</h2>
+  <p>Electrical engineering and computer science researcher focused on UAS integration into the National Airspace System, Advanced Air Mobility, airspace routing and operations, flight-recorder requirements, aviation safety, optimization, simulation, and system-level modeling. Multidisciplinary background in electrical engineering, underwater acoustics, signal processing, wireless communications, machine learning, and data-driven aerospace systems.</p>
+
+  <h2>Education</h2>
+  <div class="entry"><div class="entry-head"><span>Ph.D., Electrical Engineering &amp; Computer Science</span><span class="entry-date">Aug 2022 – Jul 2026</span></div><div class="entry-sub">Embry-Riddle Aeronautical University, Daytona Beach, FL · GPA 4.0</div><div class="entry-sub">Dissertation: <a href="https://commons.erau.edu/edt/1007/">“Noise-Optimized Routes for Air Taxi”</a> · Committee Chair: Richard S. Stansbury</div></div>
+  <div class="entry"><div class="entry-head"><span>M.Eng., Underwater Acoustics Engineering</span><span class="entry-date">Sep 2018 – Mar 2021</span></div><div class="entry-sub">Harbin Engineering University, Harbin, China · GPA 3.86</div><div class="entry-sub">Thesis: PAPR Reduction with Nonlinear Distortion Removal in Underwater Acoustic OFDM Communication Systems</div></div>
+  <div class="entry"><div class="entry-head"><span>B.Eng., Electronic Engineering</span><span class="entry-date">Jan 2013 – Dec 2016</span></div><div class="entry-sub">Dawood University of Engineering and Technology, Karachi, Pakistan</div></div>
 
   <h2>Research &amp; Engineering Experience</h2>
-<div class="entry">
-<div class="entry-head"><span>Graduate Research Assistant - Embry-Riddle Aeronautical University</span><span>Aug 2022 - Jul 2026</span></div>
-<ul>
-<li>Contributed to ASSURE Project A55 on flight-recorder requirements for UAS integration into the U.S. National Airspace System</li>
-<li>Contributed to ASSURE Project A64 evaluating AAM/UAM technologies, automation concepts, safety considerations, and system architectures</li>
-<li>Reviewed FAA guidance and industry standards to support research on safe automation and airspace integration</li>
-<li>Applied Python, MATLAB, optimization, simulation, and data analysis methods to aerospace research questions</li>
-</ul>
-    </div>
-<div class="entry">
-<div class="entry-head"><span>Graduate Research Assistant - Harbin Engineering University</span><span>Sep 2018 - Mar 2021</span></div>
-<ul>
-<li>Researched underwater acoustic OFDM communications, reliability, nonlinear distortion removal, and Doppler compensation</li>
-<li>Developed machine-learning and signal-processing methods for communication-system analysis and published peer-reviewed results</li>
-  </ul>
-  </div>
-  <div class="entry">
-  <div class="entry-head"><span>Assistant Engineer / Electrical Supervisor - K-Electric / MM Associates</span><span>Jul 2016 - Sep 2018</span></div>
-  <ul>
-  <li>Performed three-phase electrical testing, load distribution, phase balancing, and underground cable-fault localization</li>
-  <li>Supported feeder-tripping normalization, service restoration, and 11 kV network operations</li>
-</ul>
-</div>
+  <div class="entry"><div class="entry-head"><span>Graduate Research Assistant · Embry-Riddle Aeronautical University</span><span class="entry-date">Aug 2022 – Jul 2026</span></div><ul><li>Contributed to ASSURE Project A55 on flight-recorder requirements for UAS integration into the U.S. National Airspace System.</li><li>Contributed to ASSURE Project A64 evaluating AAM/UAM technologies, automation concepts, safety considerations, and system architectures.</li><li>Reviewed FAA guidance and industry standards for safe automation, certification, and airspace integration.</li><li>Conducted research in airspace operations, route optimization, trajectory analysis, aviation noise, demand modeling, and detect-and-avoid.</li></ul></div>
+  <div class="entry"><div class="entry-head"><span>Graduate Research Assistant · Harbin Engineering University</span><span class="entry-date">Sep 2018 – Mar 2021</span></div><ul><li>Researched underwater acoustic OFDM communications, reliability, nonlinear distortion removal, and Doppler compensation.</li><li>Developed machine-learning and signal-processing methods that contributed to peer-reviewed publications.</li></ul></div>
+  <div class="entry"><div class="entry-head"><span>Assistant Engineer / Electrical Supervisor · K-Electric / MM Associates</span><span class="entry-date">Jul 2016 – Sep 2018</span></div><ul><li>Performed three-phase testing, load distribution, phase balancing, and underground cable-fault localization.</li><li>Supported feeder-tripping normalization, service restoration, and 11 kV network operations.</li></ul></div>
+  <div class="entry"><div class="entry-head"><span>Engineering Intern · KNSTEL, Lahore</span><span class="entry-date">Jun – Jul 2015</span></div><p>Supported Huawei 3G equipment installation and commissioning for Telenor and Mobilink network projects.</p></div>
+  <div class="entry"><div class="entry-head"><span>Engineering Intern · WAPDA Hydel Training Center, Mangla</span><span class="entry-date">Jul – Aug 2014</span></div><p>Trained in hydroelectric generation, turbines, transformers, and grid operations at Mangla Power Station and its 600 MW grid station.</p></div>
 
-<h2>Selected Publications &amp; Recognition</h2>
-  <ul class="pubs">
-  <li>Best of Session Paper Award, 43rd Digital Avionics Systems Conference (DASC), 2024 - flight recorder requirements for UAS integration into the NAS</li>
-<li>Advanced Air Mobility: Innovations, Applications, Challenges, and Future Potential - Journal of Air Transportation, AIAA, 2025</li>
-  <li>Noise Prediction and Mitigation for UAS and eVTOL Aircraft: A Survey - Drones, 2025</li>
-  <li>Flight Data Recorders: Past, Present, and Future - IEEE Aerospace and Electronic Systems Magazine, 2023</li>
-  <li>Demand Modeling for Advanced Air Mobility: Challenges, Opportunities, and Future Directions - IEEE T-ITS, 2026</li>
-  <li>Comparative Study of Vision-Based Detect and Avoid for Urban Air Mobility - AIAA SciTech, 2026</li>
+  <h2>Selected Research Projects</h2>
+  <ul>
+    <li><a href="https://commons.erau.edu/edt/1007/">Noise-Optimized Routes for Air Taxi</a> — dissertation framework coupling network design, trajectory refinement, and acoustic evaluation.</li>
+    <li><a href="https://waleedraza.dev/aircraft-detection">Vision-Based Detect and Avoid for UAM</a> — comparative evaluation of DETR, YOLOv9, and YOLOv11.</li>
+    <li><a href="https://waleedraza.dev/route-planning">Route Planning for Advanced Air Mobility</a> — interactive Florida network scenarios using FAA NASR and Census data.</li>
+    <li><a href="https://waleedraza.dev/simulations">UAM Simulations</a> — MATSim and OTFVis analysis of routes, noise, and airspace operations.</li>
+    <li><a href="https://waleedraza.dev/underwater-acoustics">Underwater Acoustic Engineering</a> — tank measurement, lake-trial OFDM/QPSK, DSP foundations, and BELLHOP modeling.</li>
   </ul>
-  <p style="font-size:0.85rem;color:var(--muted);">Full publication list: <a href="index.html#publications">see website</a> or <a href="https://scholar.google.com/citations?user=qOyRccEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p>
+
+  <h2>Publications &amp; Recognition</h2>
+  <ul class="pubs">
+    <li>Acharya, K., <strong>Raza, W.</strong>, et al. “Demand Modeling for Advanced Air Mobility: Challenges, Opportunities, and Future Directions.” <em>IEEE Transactions on Intelligent Transportation Systems</em>, 2026. <a href="https://doi.org/10.1109/TITS.2026.3671002">DOI</a></li>
+    <li><strong>Raza, W.</strong>, Stansbury, R. S. “Noise Prediction and Mitigation for UAS and eVTOL Aircraft: A Survey.” <em>Drones</em>, 2025. <a href="https://doi.org/10.3390/drones9080577">DOI</a></li>
+    <li><strong>Raza, W.</strong>, et al. “Advanced Air Mobility: Innovations, Applications, Challenges, and Future Potential.” <em>Journal of Air Transportation</em>, 2025. <a href="https://doi.org/10.2514/1.D0440">DOI</a></li>
+    <li><strong>Raza, W.</strong>, et al. “A Comparative Study of Vision-Based Detect and Avoid for Urban Air Mobility.” <em>AIAA SciTech</em>, 2026. <a href="https://doi.org/10.2514/6.2026-0465">DOI</a></li>
+    <li><strong>Raza, W.</strong>, et al. “Flight Data Recorders: Past, Present, and Future.” <em>IEEE Aerospace and Electronic Systems Magazine</em>, 2023. <a href="https://doi.org/10.1109/MAES.2023.3335333">DOI</a></li>
+    <li>Six additional journal and conference publications in underwater acoustics, OFDM communications, machine learning, and neurosymbolic reinforcement learning. <a href="index.html#publications">Full publication list</a></li>
+  </ul>
+  <p class="award">Best of Session Paper Award · 43rd Digital Avionics Systems Conference · 2024</p>
+
+  <h2>Awards, Honors &amp; Fellowships</h2>
+  <ul><li>International Student Role Model, Harbin Engineering University, 2022</li><li>ANSO Scholarship for Young Talents, 2021</li><li>China Scholarship Council Award for M.Eng. study and research, 2018–2021</li><li>Meritorious Honor Award, Harbin Engineering University, 2020</li><li>HEU Travel Grant, 2019</li></ul>
+
+  <h2>Professional Service</h2>
+  <p>Editorial Board Member, Engineering, Technology &amp; Applied Science Research, since 2021. IEEE Graduate Student Member, IEEE Daytona Beach Section, since 2022. Registered Engineer, Pakistan Engineering Council, since 2017.</p>
+  <p>Invited reviewer for journals published by Springer Nature, IEEE, MDPI, ETASR, and IWCMC. Completed 52 reviews across 11 publications and grants according to the <a href="https://orcid.org/0000-0002-4142-3195">ORCID record</a>.</p>
 
   <h2>Skills</h2>
-  <p>Python &middot; MATLAB &middot; LaTeX &middot; PyTorch &middot; OpenCV &middot; GeoPandas / QGIS / ArcGIS &middot; NetworkX &middot; Pyomo &middot; Optimization &amp; Simulation &middot; Signal Processing &middot; Route Optimization &amp; Trajectory Analysis</p>
+  <p><strong>Programming &amp; Tools:</strong> Python · MATLAB · LaTeX · PyTorch · Ultralytics YOLO · OpenCV · NumPy · SciPy · Pandas · Jupyter · Linux</p>
+  <p><strong>Geospatial &amp; Optimization:</strong> GeoPandas · QGIS · ArcGIS · NetworkX · Pyomo · HiGHS</p>
+  <p><strong>Research Methods:</strong> Route Optimization · Trajectory Analysis · Signal Processing · Machine Learning · Simulation · Statistical Analysis</p>
 
+  <p class="small">Main portfolio: <a href="https://waleedraza.dev/">waleedraza.dev</a> · GitHub Pages: <a href="https://raza-waleed.github.io/">raza-waleed.github.io</a></p>
 </body>
 </html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Waleed Raza">
+  <rect width="64" height="64" rx="8" fill="#07131d"/>
+  <path d="M6 6h18v3H9v15H6V6Zm52 52H40v-3h15V40h3v18Z" fill="#38bdf8"/>
+  <text x="32" y="39" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" font-weight="700" fill="#ffb51b">WR</text>
+</svg>
