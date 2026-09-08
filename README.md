@@ -14,5 +14,3 @@ The site presents research in Advanced Air Mobility, UAS integration, aviation s
 - `sitemap.xml` and `robots.txt` — search-engine discovery
 
 GitHub Pages deploys the repository from the root of the `main` branch.
-
-Built with the help of [Claude](https://claude.com/product/claude-code).
