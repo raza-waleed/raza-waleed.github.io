@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07131d">
+  <title>Power Grid Control Room 3D | Waleed Raza</title>
+  <meta name="description" content="Interactive 3D digital twin and SCADA simulator of a 132/11 kV grid station and its 11 kV overhead and underground feeders, built by Waleed Raza from his K-Electric field experience in Karachi.">
+  <meta name="author" content="Waleed Raza">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://raza-waleed.github.io/power-grid.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Power Grid Control Room 3D | Waleed Raza">
+  <meta property="og:description" content="A 3D digital twin and SCADA simulator of an 11 kV distribution network, with a cable fault drill restored by load transfer.">
+  <meta property="og:url" content="https://raza-waleed.github.io/power-grid.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Power Grid Control Room 3D | Waleed Raza">
+  <meta name="twitter:description" content="A 3D digital twin and SCADA simulator of an 11 kV distribution network.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="power-grid/control-room.css">
+  <style>
+    .page-hero { padding: 88px 0 72px; }
+    .page-hero h1 { max-width: 900px; font-size: clamp(2.1rem, 3.5vw, 3.1rem); }
+    .page-hero .hero-lede { max-width: 76ch; }
+    .field-work { display: block; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); color: #c4d4da; font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .field-work b { color: var(--cyan); font-weight: 400; }
+    .nowrap { white-space: nowrap; }
+    .network-grid .project-card { min-height: 0; }
+    .grid-note { margin: 18px 0 0; color: var(--muted); font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.72rem; line-height: 1.7; letter-spacing: 0.02em; }
+    .grid-note strong { color: var(--cyan); font-weight: 400; }
+    .grid-loading, .grid-error { padding: 56px 24px; border: 1px solid var(--line-strong); color: var(--muted); font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.75rem; letter-spacing: 0.06em; text-align: center; text-transform: uppercase; }
+    .grid-error a { color: var(--cyan); }
+    .drill-steps { margin: 6px 0 22px; }
+    .drill-steps li { margin: 10px 0; }
+    .drill-steps em { display: block; color: var(--cyan); font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.68rem; font-style: normal; letter-spacing: 0.06em; text-transform: uppercase; }
+    .studio-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .studio-list li { padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+    .studio-list strong { color: var(--ink-strong); font-weight: 600; }
+    .studio-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    @media (max-width: 760px) {
+      .page-hero { padding: 64px 0 52px; }
+      .page-hero h1 { font-size: 2rem; }
+    }
+  </style>
+  <script>if ('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="topnav" aria-label="Primary navigation">
+    <div class="shell nav-inner">
+      <a class="brand" href="index.html" aria-label="Waleed Raza, home">
+        <span class="brand-mark" aria-hidden="true">WR</span>
+        <span>Waleed Raza, Ph.D.</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="power-grid.html" aria-current="page">Power Grid</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="cv.html">View CV</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero page-hero" id="top">
+      <div class="shell">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>K-Electric field experience · 11 kV distribution</p>
+        <h1>Power Grid Control Room 3D</h1>
+        <p class="hero-role">A 3D digital twin and SCADA simulator<br><span>132/11 kV grid station · 11 kV overhead and underground feeders</span></p>
+        <p class="hero-lede">From 2016 to 2018 I worked as an Assistant Engineer and Electrical Supervisor on the <span class="nowrap">K-Electric</span> network in Karachi, with MM Associates: three phase testing, load distribution and phase balancing, underground cable fault location, and feeder tripping normalization and service restoration on the 11 kV network. This project rebuilds that kind of network as a live 3D model beside a working SCADA single line diagram. Operate the breakers yourself, or run the cable fault drill and bring every customer back by load transfer.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#control-room">Operate the control room</a>
+          <a class="button button-secondary" href="power-grid/studio/">Open the full studio</a>
+          <a class="button button-secondary" href="https://waleedraza.dev/power-grid">View on waleedraza.dev</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="signal-strip" aria-label="Project highlights">
+      <div class="shell signal-grid">
+        <span data-reveal>132/11 kV grid station</span>
+        <span data-reveal>SCADA single line</span>
+        <span data-reveal>WebGL digital twin</span>
+        <span data-reveal>Python switching engine</span>
+        <span data-reveal>32 unit tests</span>
+      </div>
+    </section>
+
+    <section class="section" id="network">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">01 / The network</p>
+            <h2>From the grid station to the customer's door.</h2>
+          </div>
+          <p>Power reaches a Karachi neighbourhood in four stages. Each one is modelled in the 3D scene below, with ratings typical of an urban 11 kV network.</p>
+        </div>
+        <div class="project-grid network-grid">
+          <article class="project-card" data-reveal>
+            <span class="project-tag">132/11 kV</span>
+            <h3>Grid station</h3>
+            <p>A 132 kV line feeds two 40 MVA transformers, each on its own 11 kV bus section, joined by a bus coupler and six feeder breakers.</p>
+            <span class="field-work"><b>Field work</b> · 11 kV network operations</span>
+          </article>
+          <article class="project-card" data-reveal>
+            <span class="project-tag">11 kV · 400 V</span>
+            <h3>Overhead network</h3>
+            <p>Feeder F1 on concrete poles with pole mounted transformers, a 400 V LT line and service drops to homes spread across three phases.</p>
+            <span class="field-work"><b>Field work</b> · Three phase testing, load distribution, phase balancing</span>
+          </article>
+          <article class="project-card" data-reveal>
+            <span class="project-tag">XLPE cable ring</span>
+            <h3>Underground network</h3>
+            <p>Feeder F2 as an 11 kV cable to a four way ring main unit, a compact substation for apartments and a market, and a ring onward to RMU 2 to 6.</p>
+            <span class="field-work"><b>Field work</b> · Underground cable fault location</span>
+          </article>
+          <article class="project-card" data-reveal>
+            <span class="project-tag">SCADA</span>
+            <h3>Control room</h3>
+            <p>Remote breakers and RMU switches, field operated tie points, alarms and an event log, with interlocks that stop two supplies being paralleled.</p>
+            <span class="field-work"><b>Field work</b> · Feeder tripping normalization, service restoration</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="control-room">
+      <div class="shell" style="--shell: 1320px">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">02 / Control room 3D</p>
+            <h2>Operate the network yourself.</h2>
+          </div>
+          <p>Drag to orbit the model, pick a camera view, and click any object to inspect it. On the SCADA single line, select a breaker or switch, preview the result, then execute it. Start the fault drill, or try your own order and watch the protection respond.</p>
+        </div>
+        <div id="grid-control-room" class="grid-cr">
+          <div class="grid-loading">Loading the control room…</div>
+          <noscript><div class="grid-error">The control room needs JavaScript. So does <a href="power-grid/studio/">the full studio</a>.</div></noscript>
+        </div>
+        <p class="grid-note" id="grid-note">Representative network drawn from my field experience. Loads, ratings and switching times are typical values for an urban 11 kV network, not K-Electric records.</p>
+      </div>
+    </section>
+
+    <section class="section" id="fault-drill">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">03 / Fault drill</p>
+            <h2>Isolate the cable, split the ring, restore everyone.</h2>
+          </div>
+          <p>An earth fault on cable C1 trips feeder F2. The fault passage indicator at RMU-1 did not operate, so the fault lies between the grid station and RMU-1. Neither neighbouring feeder can carry all of F2 alone.</p>
+        </div>
+        <article class="case-study" data-reveal>
+          <div class="case-meta"><span class="case-type">Cable fault drill · Feeder F2</span><span id="drill-restored">Restored 14:48</span></div>
+          <div class="case-grid">
+            <div class="case-copy">
+              <h3>Four switching operations, two feeders, no overloads.</h3>
+              <ol class="compact-list drill-steps">
+                <li>Open RS-1 at RMU-1 to isolate cable C1 from the ring.<em>SCADA · 1 min</em></li>
+                <li>Open RS-2 to split the ring. F1 cannot take all 3.10 MW of F2: that would put <span id="drill-overload-text">391 A</span> on a 350 A line.<em>SCADA · 1 min</em></li>
+                <li>Close the normally open point at RMU-6. F4 picks up RMU 2 to 6 and its 2,100 customers first, because it is the larger group.<em>Field crew · 20 min</em></li>
+                <li>Close the ABS tie. F1 picks up RMU-1 and the compact substation: the last 420 customers.<em>Field crew · 20 min</em></li>
+              </ol>
+              <p class="case-result">Restoring the larger group first matters: <span id="drill-compare">63,840 customer minutes against 97,440</span> the other way round.</p>
+            </div>
+            <div class="case-metrics">
+              <div><strong id="stat-affected">2,520</strong><span>Customers off supply</span></div>
+              <div><strong id="stat-minutes">42 min</strong><span>To restore everyone</span></div>
+              <div><strong id="stat-cmi">63,840</strong><span>Customer minutes lost</span></div>
+              <div><strong id="stat-overload">391 A</strong><span>On a 350 A line if F2 moves whole</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="studio">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="section-index">04 / Full studio</p>
+            <h2>The complete Electrical Investigation Studio.</h2>
+          </div>
+          <p>The control room is one part of a larger studio I built in Python. Python computes the engineering results and 32 unit tests check them against hand calculations. The 3D renderer is plain WebGL written for this project.</p>
+        </div>
+        <ul class="studio-list">
+          <li><strong>Supply network</strong>: a drawing of the 132 kV to 400 V system with every component selectable.</li>
+          <li><strong>Investigation</strong>: an underground feeder trip with a TDR record, and an industrial switchboard hot spot, each diagnosed with Bayesian updates.</li>
+          <li><strong>Decision comparison</strong>: maintenance plans ranked by expected interruption time under a crew limit.</li>
+          <li><strong>Research and model</strong>: the equations, likelihood tables and a reproducible benchmark.</li>
+        </ul>
+        <div class="studio-actions">
+          <a class="button button-primary" href="power-grid/studio/">Open the full studio</a>
+          <a class="button button-secondary" href="index.html#projects">Back to all projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>&copy; <span id="year"></span> Waleed Raza</span>
+      <span>Power grid control room · 132/11 kV · SCADA · WebGL · Python</span>
+    </div>
+  </footer>
+
+  <script src="reveal.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script type="module">
+    import {mountControlRoom} from './power-grid/control-room.js';
+
+    const root = document.getElementById('grid-control-room');
+    const fmt = n => Math.round(n).toLocaleString('en-US');
+    const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+
+    fetch('power-grid/grid-data.json')
+      .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
+      .then(scada => {
+        const room = mountControlRoom(root, {scada, header: false});
+        room.resume();
+        // Keep the page's numbers tied to the exported Python model.
+        const result = scada.drillResult;
+        const full = scada.references.find(r => r.name === 'Full transfer of F2 onto F1');
+        set('stat-affected', fmt(result.customersAffected));
+        set('stat-minutes', `${result.minutes} min`);
+        set('stat-cmi', fmt(result.customerMinutes));
+        set('drill-restored', `Restored ${result.restoredAt}`);
+        set('drill-compare', `${fmt(result.customerMinutes)} customer minutes against ${fmt(result.swappedOrderCustomerMinutes)}`);
+        if (full) { set('stat-overload', `${Math.round(full.amps.F1)} A`); set('drill-overload-text', `${Math.round(full.amps.F1)} A`); }
+        document.getElementById('grid-note').insertAdjacentHTML('beforeend',
+          ` The in-browser switching engine recomputed ${room.check.total} reference states from the Python model and matched <strong>${room.check.match} of ${room.check.total}</strong>.`);
+      })
+      .catch(() => {
+        root.innerHTML = '<div class="grid-error">The control room could not load here. <a href="power-grid/studio/">Open the full studio</a> instead.</div>';
+      });
+  </script>
+</body>
+</html>

@@ -57,6 +57,7 @@
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
+        <a href="power-grid.html">Power Grid</a>
         <a href="#experience">Experience</a>
         <a href="#publications">Publications</a>
         <a href="#contact">Contact</a>
@@ -222,6 +223,42 @@
             <h3>Underwater Acoustic Engineering</h3>
             <p>Tank characterization, a real lake-trial OFDM/QPSK link, DSP foundations, and BELLHOP ray-tracing simulation.</p>
             <a class="text-link" href="https://waleedraza.dev/underwater-acoustics">Explore the reports <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="project-card project-card-wide" data-reveal>
+            <div class="wide-copy">
+              <span class="project-tag">K-Electric · 11 kV grid · 3D</span>
+              <h3>Power Grid Control Room 3D</h3>
+              <p>A 3D digital twin and SCADA simulator of a 132/11 kV grid station and its feeders, built from my field work on the K-Electric network in Karachi. Run a cable fault drill, isolate the faulted cable, and restore every customer by load transfer.</p>
+              <a class="text-link" href="power-grid.html">Open the control room <span aria-hidden="true">↗</span></a>
+            </div>
+            <svg class="grid-mini" viewBox="0 0 420 170" aria-hidden="true" focusable="false">
+              <g class="gm-grid"><path d="M0 42H420M0 85H420M0 128H420M70 0V170M140 0V170M210 0V170M280 0V170M350 0V170"/></g>
+              <path class="gm-hv" d="M12 85H46"/>
+              <circle class="gm-wind gm-wind-hv" cx="58" cy="85" r="12"/>
+              <circle class="gm-wind gm-wind-mv" cx="74" cy="85" r="12"/>
+              <path class="gm-mv" d="M86 85H98"/>
+              <path class="gm-bus" d="M98 30V140"/>
+              <path class="gm-mv" d="M98 42H336"/>
+              <path class="gm-mv gm-flow" d="M98 42H336"/>
+              <path class="gm-dead gm-cable" d="M98 85H336"/>
+              <path class="gm-mv gm-cable" d="M98 128H336"/>
+              <path class="gm-mv gm-flow" d="M98 128H336"/>
+              <path class="gm-pole" d="M160 34V50M220 34V50M280 34V50"/>
+              <path class="gm-tie" d="M352 42V85"/>
+              <path class="gm-fault" d="M150 76l9 6l-7 4l9 6"/>
+              <circle class="gm-open" cx="226" cy="85" r="5"/>
+              <path class="gm-house" d="M362 52V38L372 30L382 38V52Z"/><rect class="gm-win" x="368" y="41" width="4" height="4"/>
+              <path class="gm-house" d="M362 95V81L372 73L382 81V95Z"/><rect class="gm-win-off" x="368" y="84" width="4" height="4"/>
+              <path class="gm-house" d="M362 138V124L372 116L382 124V138Z"/><rect class="gm-win" x="368" y="127" width="4" height="4"/>
+              <text x="12" y="74">132 kV</text>
+              <text x="104" y="22">11 kV</text>
+              <text x="300" y="36">F1</text>
+              <text x="300" y="79">F2</text>
+              <text x="300" y="122">F4</text>
+              <text class="gm-alert" x="140" y="106">FAULT</text>
+              <text x="210" y="106">RS-1</text>
+              <text x="358" y="66">N/O</text>
+            </svg>
           </article>
         </div>
 
@@ -468,7 +505,7 @@
           </article>
           <article class="timeline-entry" data-reveal>
             <div class="entry-date">Jul 2016 – Sep 2018</div>
-            <div><h3>Assistant Engineer / Electrical Supervisor</h3><p class="entry-meta">K-Electric · MM Associates · Karachi, Pakistan</p><ul class="compact-list"><li>Performed three-phase testing, load distribution, phase balancing, and underground cable-fault localization.</li><li>Supported feeder-tripping normalization, service restoration, and 11 kV network operations.</li></ul></div>
+            <div><h3>Assistant Engineer / Electrical Supervisor</h3><p class="entry-meta">K-Electric · MM Associates · Karachi, Pakistan</p><ul class="compact-list"><li>Performed three-phase testing, load distribution, phase balancing, and underground cable-fault localization.</li><li>Supported feeder-tripping normalization, service restoration, and 11 kV network operations.</li></ul><a class="text-link" href="power-grid.html">Interactive 3D model of this network <span aria-hidden="true">↗</span></a></div>
           </article>
           <article class="timeline-entry" data-reveal>
             <div class="entry-date">Jun – Jul 2015</div>
