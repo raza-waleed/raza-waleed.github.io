@@ -42,6 +42,22 @@
       .page-hero { padding: 64px 0 52px; }
       .page-hero h1 { font-size: 2rem; }
     }
+    /* Hero figure: the GS-1 single line in a console panel, as on the home page hero */
+    .grid-console .grid-mini { border: 0; border-bottom: 1px solid var(--line); background: rgba(0, 0, 0, 0.12); }
+    .grid-hero text { font-size: 11px; }
+    .grid-hero .gh-strong { fill: var(--ink); font-size: 12px; }
+    .grid-hero .gh-hub-label { fill: var(--lime); font-size: 12px; font-weight: 700; }
+    .grid-hero .gh-station { fill: rgba(56, 189, 248, 0.045); stroke: rgba(56, 189, 248, 0.35); stroke-width: 1; }
+    .grid-hero .gh-area { fill: rgba(255, 179, 92, 0.03); stroke: rgba(255, 179, 92, 0.32); stroke-width: 1; stroke-dasharray: 4 5; }
+    .grid-hero .gm-bus.gh-hv { stroke: #7eaaff; }
+    .grid-hero .gm-flow.gh-hv { stroke: #d6e4ff; }
+    .grid-hero .gh-wind-lv { stroke: #45d29a; }
+    .grid-hero .gh-lv { fill: none; stroke: #45d29a; stroke-width: 1.6; }
+    .grid-hero .gh-cb { fill: var(--lime); }
+    .grid-hero .gh-cb.gh-hv { fill: #7eaaff; }
+    .grid-hero .gh-load { fill: var(--lime); filter: drop-shadow(0 0 4px rgba(255, 181, 27, 0.6)); }
+    .grid-hero .gh-hub { fill: var(--bg-deep); stroke: var(--lime); stroke-width: 2.4; filter: drop-shadow(0 0 6px rgba(255, 181, 27, 0.7)); }
+    @media (max-width: 1050px) { .grid-console { max-width: 560px; } }
   </style>
   <script>if ('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
 </head>
@@ -69,16 +85,139 @@
 
   <main id="main">
     <header class="hero page-hero" id="top">
-      <div class="shell">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>K-Electric field experience · 11 kV distribution</p>
-        <h1>Power Grid Control Room 3D</h1>
-        <p class="hero-role">A 3D digital twin and SCADA simulator<br><span>132/11 kV grid station · 11 kV overhead and underground feeders</span></p>
-        <p class="hero-lede">From 2016 to 2018 I worked as an Assistant Engineer and Electrical Supervisor on the <span class="nowrap">K-Electric</span> network in Karachi, with MM Associates: three phase testing, load distribution and phase balancing, underground cable fault location, and feeder tripping normalization and service restoration on the 11 kV network. This project rebuilds that kind of network as a live 3D model beside a working SCADA single line diagram. Operate the breakers yourself, or run the cable fault drill and bring every customer back by load transfer.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#control-room">Operate the control room</a>
-          <a class="button button-secondary" href="power-grid/studio/">Open the full studio</a>
-          <a class="button button-secondary" href="https://waleedraza.dev/power-grid">View on waleedraza.dev</a>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>K-Electric field experience · 11 kV distribution</p>
+          <h1>Power Grid Control Room 3D</h1>
+          <p class="hero-role">A 3D digital twin and SCADA simulator<br><span>132/11 kV grid station · 11 kV overhead and underground feeders</span></p>
+          <p class="hero-lede">From 2016 to 2018 I worked as an Assistant Engineer and Electrical Supervisor on the <span class="nowrap">K-Electric</span> network in Karachi, with MM Associates: three phase testing, load distribution and phase balancing, underground cable fault location, and feeder tripping normalization and service restoration on the 11 kV network. This project rebuilds that kind of network as a live 3D model beside a working SCADA single line diagram. Operate the breakers yourself, or run the cable fault drill and bring every customer back by load transfer.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#control-room">Operate the control room</a>
+            <a class="button button-secondary" href="power-grid/studio/">Open the full studio</a>
+            <a class="button button-secondary" href="https://waleedraza.dev/power-grid">View on waleedraza.dev</a>
+          </div>
         </div>
+        <aside class="route-console grid-console" aria-label="SCADA single line of grid station GS-1">
+          <div class="console-head">
+            <span>SCADA &#183; GS-1 single line</span>
+            <span class="console-live">System normal</span>
+          </div>
+          <svg class="grid-mini grid-hero" viewBox="0 0 640 600" role="img" aria-labelledby="gs1-title gs1-desc">
+            <title id="gs1-title">Single line diagram of grid station GS-1</title>
+            <desc id="gs1-desc">A 132 kV supply feeds transformers T1 and T2 and two 11 kV bus sections with six feeders. F1 runs overhead to pole mounted transformers PMT-1 and PMT-2, F2 runs by cable C1 to ring main unit RMU-1 and compact substation CSS-1, and the ring continues through RMU 2 to 6 to a normally open point on F4.</desc>
+            <g class="gm-grid"><path d="M0 80H640M0 160H640M0 240H640M0 320H640M0 400H640M0 480H640M0 560H640M80 0V600M160 0V600M240 0V600M320 0V600M400 0V600M480 0V600M560 0V600"/></g>
+            <rect class="gh-area" x="36" y="278" width="568" height="304" rx="2"/>
+            <rect class="gh-station" x="36" y="40" width="568" height="226" rx="2"/>
+            <path class="gm-hv" d="M320 0V60"/>
+            <path class="gm-bus gh-hv" d="M150 60H490"/>
+            <path class="gm-hv" d="M200 60V107"/>
+            <path class="gm-mv" d="M200 141V208"/>
+            <path class="gm-hv" d="M440 60V107"/>
+            <path class="gm-mv" d="M440 141V208"/>
+            <path class="gm-bus" d="M60 208H306"/>
+            <path class="gm-bus" d="M334 208H580"/>
+            <path class="gm-mv" d="M170 208V288"/>
+            <path class="gm-mv" d="M240 208V288"/>
+            <path class="gm-mv" d="M470 208V288"/>
+            <path class="gm-mv" d="M100 208V320H304"/>
+            <path class="gm-pole" d="M130 313V327M165 313V327M230 313V327M285 313V327"/>
+            <path class="gm-mv" d="M200 320V330"/>
+            <path class="gh-lv" d="M200 352V362"/>
+            <path class="gm-mv" d="M260 320V330"/>
+            <path class="gh-lv" d="M260 352V362"/>
+            <path class="gm-tie" d="M314 320H350V430"/>
+            <path class="gm-mv" d="M380 208V256"/>
+            <path class="gm-mv gm-cable" d="M380 256V430"/>
+            <path class="gm-bus" d="M330 430H450"/>
+            <path class="gm-mv" d="M360 430V466"/>
+            <path class="gh-lv" d="M360 488V496"/>
+            <path class="gm-mv gm-cable" d="M430 430V462C430 500 458 522 496 526C528 529 548 518 556 498"/>
+            <path class="gm-mv" d="M560 208V256"/>
+            <path class="gm-mv gm-cable" d="M560 256V300H580"/>
+            <path class="gm-tie" d="M560 300V488"/>
+            <path class="gm-hv gm-flow gh-hv" d="M320 0V60"/>
+            <path class="gm-hv gm-flow gh-hv" d="M200 60V107"/>
+            <path class="gm-mv gm-flow" d="M200 141V208"/>
+            <path class="gm-hv gm-flow gh-hv" d="M440 60V107"/>
+            <path class="gm-mv gm-flow" d="M440 141V208"/>
+            <path class="gm-mv gm-flow" d="M170 208V288"/>
+            <path class="gm-mv gm-flow" d="M240 208V288"/>
+            <path class="gm-mv gm-flow" d="M470 208V288"/>
+            <path class="gm-mv gm-flow" d="M100 208V320H260"/>
+            <path class="gm-mv gm-flow" d="M380 208V430"/>
+            <path class="gm-mv gm-flow" d="M360 430V466"/>
+            <path class="gm-mv gm-flow" d="M430 430V462C430 500 458 522 496 526C510.7 527.4 522.9 525.8 532.5 521.7"/>
+            <path class="gm-mv gm-flow" d="M560 208V300H580"/>
+            <rect class="gh-cb gh-hv" x="195" y="79" width="10" height="10"/>
+            <rect class="gh-cb" x="195" y="173" width="10" height="10"/>
+            <circle class="gm-wind gm-wind-hv" cx="200" cy="117" r="10"/>
+            <circle class="gm-wind gm-wind-mv" cx="200" cy="131" r="10"/>
+            <rect class="gh-cb gh-hv" x="435" y="79" width="10" height="10"/>
+            <rect class="gh-cb" x="435" y="173" width="10" height="10"/>
+            <circle class="gm-wind gm-wind-hv" cx="440" cy="117" r="10"/>
+            <circle class="gm-wind gm-wind-mv" cx="440" cy="131" r="10"/>
+            <rect class="gm-open" x="313" y="201" width="14" height="14"/>
+            <rect class="gh-cb" x="95" y="229" width="10" height="10"/>
+            <rect class="gh-cb" x="165" y="229" width="10" height="10"/>
+            <rect class="gh-cb" x="235" y="229" width="10" height="10"/>
+            <rect class="gh-cb" x="375" y="229" width="10" height="10"/>
+            <rect class="gh-cb" x="465" y="229" width="10" height="10"/>
+            <rect class="gh-cb" x="555" y="229" width="10" height="10"/>
+            <circle class="gh-load" cx="170" cy="291" r="3.4"/>
+            <circle class="gh-load" cx="240" cy="291" r="3.4"/>
+            <circle class="gh-load" cx="470" cy="291" r="3.4"/>
+            <circle class="gm-wind gm-wind-mv" cx="200" cy="336" r="6"/>
+            <circle class="gm-wind gh-wind-lv" cx="200" cy="346" r="6"/>
+            <path class="gm-house" d="M180 380V372L186 366L192 372V380Z"/><rect class="gm-win" x="184" y="373" width="4" height="4"/>
+            <path class="gm-house" d="M194 380V372L200 366L206 372V380Z"/><rect class="gm-win" x="198" y="373" width="4" height="4"/>
+            <path class="gm-house" d="M208 380V372L214 366L220 372V380Z"/><rect class="gm-win" x="212" y="373" width="4" height="4"/>
+            <circle class="gm-wind gm-wind-mv" cx="260" cy="336" r="6"/>
+            <circle class="gm-wind gh-wind-lv" cx="260" cy="346" r="6"/>
+            <path class="gm-house" d="M240 380V372L246 366L252 372V380Z"/><rect class="gm-win" x="244" y="373" width="4" height="4"/>
+            <path class="gm-house" d="M254 380V372L260 366L266 372V380Z"/><rect class="gm-win" x="258" y="373" width="4" height="4"/>
+            <path class="gm-house" d="M268 380V372L274 366L280 372V380Z"/><rect class="gm-win" x="272" y="373" width="4" height="4"/>
+            <circle class="gm-open" cx="309" cy="320" r="5"/>
+            <circle class="gm-wind gm-wind-mv" cx="360" cy="472" r="6"/>
+            <circle class="gm-wind gh-wind-lv" cx="360" cy="482" r="6"/>
+            <path class="gm-house" d="M340 514V506L346 500L352 506V514Z"/><rect class="gm-win" x="344" y="507" width="4" height="4"/>
+            <path class="gm-house" d="M354 514V506L360 500L366 506V514Z"/><rect class="gm-win" x="358" y="507" width="4" height="4"/>
+            <path class="gm-house" d="M368 514V506L374 500L380 506V514Z"/><rect class="gm-win" x="372" y="507" width="4" height="4"/>
+            <circle class="gh-load" cx="430" cy="464.3" r="3.0"/>
+            <circle class="gh-load" cx="439.9" cy="496.5" r="3.0"/>
+            <circle class="gh-load" cx="465.9" cy="518" r="3.0"/>
+            <circle class="gh-load" cx="499.1" cy="526.2" r="3.0"/>
+            <circle class="gh-load" cx="532.5" cy="521.7" r="3.0"/>
+            <circle class="gh-load" cx="583" cy="300" r="3.4"/>
+            <circle class="gm-open" cx="560" cy="493" r="5"/>
+            <circle class="gh-hub" cx="320" cy="60" r="6"/>
+            <text class="gh-strong" x="144" y="64" text-anchor="end">132 kV</text>
+            <text class="gh-strong" x="216" y="122">T1</text>
+            <text x="216" y="136">40 MVA</text>
+            <text class="gh-strong" x="456" y="122">T2</text>
+            <text x="456" y="136">40 MVA</text>
+            <text x="320" y="194" text-anchor="middle">BC</text>
+            <text x="56" y="212" text-anchor="end">BUS A</text>
+            <text x="584" y="212">BUS B</text>
+            <text x="107" y="252">F1</text>
+            <text x="177" y="252">F3</text>
+            <text x="247" y="252">F5</text>
+            <text x="387" y="252">F2</text>
+            <text x="477" y="252">F6</text>
+            <text x="567" y="252">F4</text>
+            <text x="200" y="396" text-anchor="middle">PMT-1</text>
+            <text x="260" y="396" text-anchor="middle">PMT-2</text>
+            <text x="309" y="306" text-anchor="middle">ABS</text>
+            <text x="390" y="344">C1 cable</text>
+            <text x="456" y="434">RMU-1</text>
+            <text x="344" y="480" text-anchor="end">CSS-1</text>
+            <text x="490" y="550" text-anchor="middle">RMU 2 to 6</text>
+            <text x="572" y="497">N/O</text>
+            <text class="gh-hub-label" x="332" y="50">GS-1</text>
+            <text class="gh-strong" x="40" y="28">GS-1 GRID STATION &#183; 132/11 kV</text>
+            <text x="50" y="570">11 kV DISTRIBUTION &#183; 400 V CUSTOMERS</text>
+          </svg>
+          <p class="console-note">Normally open points in green: BC, the ABS tie and the N/O point at RMU-6. Dots trace the power flow.</p>
+        </aside>
       </div>
     </header>
 
